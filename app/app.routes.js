@@ -14,8 +14,20 @@ angular.module('nhs')
         })
         .state('users', {
             url: "/users",
-            templateUrl: "templates/users.html"
-        });
+            templateUrl: "templates/users.html",
+            controller: "userController"
+        })
+        .state('userCreate', {
+            url: "/users/create",
+            templateUrl: "templates/user-create.html",
+            controller: "userCreate"
+        })
+        .state('usersEdit', {
+            url: "/users/:userID",
+            templateUrl: "templates/user-edit.html",
+            controller: "userEdit"
+        })
+        ;
 }])
 
 

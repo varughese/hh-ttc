@@ -5,7 +5,7 @@
         <title>NHS</title>
     </head>
     <body ng-app="nhs" ng-controller="mainController">
-        Hello
+        <div ng-if="loggedIn"> Navbar! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
         <div ui-view></div>
 
         <script src="lib/js/angular.js"></script>

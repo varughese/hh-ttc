@@ -45,7 +45,7 @@ function AuthTokenFactory($window) {
     return tokenFactory;
 }
 
-function AuthInterceptorFactory($q, $state, AuthToken) {
+function AuthInterceptorFactory($q, $injector, AuthToken) {
     var interceptor = {};
 
     interceptor.request = function(config) {
@@ -57,7 +57,7 @@ function AuthInterceptorFactory($q, $state, AuthToken) {
     interceptor.responseError = function(response) {
         if(response.status == 403) {
             AuthToken.setToken();
-            $state.go('login');
+            $injector.get("$state").go('login');
         }
         return $q.reject(response);
     };
@@ -69,5 +69,5 @@ angular.module('nhs.auth', [])
 
     .factory('Auth', ['$http', '$q', 'AuthToken', AuthFactory])
     .factory('AuthToken', ['$window', AuthTokenFactory])
-    .factory('AuthInterceptor', ['$q', '$state', 'AuthToken', AuthInterceptorFactory])
+    .factory('AuthInterceptor', ['$q', '$injector', 'AuthToken', AuthInterceptorFactory])
 ;

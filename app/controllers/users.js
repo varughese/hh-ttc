@@ -1,6 +1,6 @@
 angular.module('nhs')
 
-.controller('userController', ['$scope', 'User', function($scope) {
+.controller('userController', ['$scope', 'User', function($scope, User) {
     $scope.processing = true;
 
     function getUsers() {
@@ -8,7 +8,7 @@ angular.module('nhs')
         .then(function(data) {
             $scope.processing = false;
 
-            $scope.users = data;
+            $scope.users = data.data;
         });
     }
 
@@ -23,7 +23,7 @@ angular.module('nhs')
 }])
 
 
-.controller('userCreate', ['User', function(User) {
+.controller('userCreate', ['User', '$scope', function(User, $scope) {
     $scope.type = 'create';
 
     $scope.saveUser = function() {
@@ -39,7 +39,7 @@ angular.module('nhs')
     };
 }])
 
-.controller('userEdit', ['$stateParams', 'User', function($stateParams, User) {
+.controller('userEdit', ['$stateParams', 'User', '$scope', function($stateParams, User, $scope) {
     $scope.type = 'edit';
 
     User.get($stateParams.userID)

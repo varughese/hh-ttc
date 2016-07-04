@@ -6,10 +6,12 @@ $scope.userLogin = {};
     $rootScope.$on('$stateChangeStart',
         function(event, toState, toParams, fromState, fromParams, options) {
             $scope.loggedIn = Auth.isLoggedIn();
+
             Auth.getUser()
                 .then(function(data) {
                     $scope.user = data;
                 });
+
         });
 
     $scope.login = function() {
