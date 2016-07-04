@@ -7,7 +7,7 @@ angular.module('nhs')
     $stateProvider
     .state('home', {
         url: "/home",
-        template: 'sup'
+        template: 'Home'
     });
 }])
 
