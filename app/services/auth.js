@@ -2,12 +2,12 @@ function AuthFactory($http, $q, AuthToken) {
     var auth = {};
 
     auth.login = function(username, password) {
-        return $http.post('/api/auth', {
+        return $http.post('/api/token', {
             username: username,
             password: password
         })
         .then(function(data) {
-            AuthToken.setToken(data.token);
+            AuthToken.setToken(data.data.token);
             return data;
         });
     };
@@ -22,7 +22,7 @@ function AuthFactory($http, $q, AuthToken) {
 
     auth.getUser = function() {
         if(auth.isLoggedIn())
-            return $http.get('/api/me');
+            return $http.get('/api/me', { cache: true });
         else
             return $q.reject({ message: 'User has no token.'});
     };
@@ -45,13 +45,29 @@ function AuthTokenFactory($window) {
     return tokenFactory;
 }
 
-function AuthInterceptorFactory($q, AuthToken) {
+function AuthInterceptorFactory($q, $state, AuthToken) {
+    var interceptor = {};
 
+    interceptor.request = function(config) {
+        var token = AuthToken.getToken();
+        if(token) config.headers['x-access-token'] = token;
+        return config;
+    };
+
+    interceptor.responseError = function(response) {
+        if(response.status == 403) {
+            AuthToken.setToken();
+            $state.go('login');
+        }
+        return $q.reject(response);
+    };
+
+    return interceptor;
 }
 
 angular.module('nhs.auth', [])
 
     .factory('Auth', ['$http', '$q', 'AuthToken', AuthFactory])
     .factory('AuthToken', ['$window', AuthTokenFactory])
-    .factory('AuthInterceptor', ['$q', 'AuthToken', AuthInterceptorFactory])
+    .factory('AuthInterceptor', ['$q', '$state', 'AuthToken', AuthInterceptorFactory])
 ;
