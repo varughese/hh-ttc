@@ -20,16 +20,17 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
-app.use(express.static(__dirname + '/app'));
 
 mongoose.connect(config.database);
 
 var apiRoutes = require('./server/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/app/index.html'));
-});
+app.use(express.static(__dirname + '/app'));
+
+// app.get('*', function(req, res) {
+//     res.sendFile(path.join(__dirname + '/app/index.html'));
+// });
 
 app.listen(config.port);
 console.log('Magic happening on port', config.port);
