@@ -5,7 +5,7 @@ var User = require('../models/user'),
 module.exports = function(app, express) {
     var apiRouter = express.Router();
 
-    apiRouter.post('/auth', function(req, res) {
+    apiRouter.post('/token', function(req, res) {
         User.findOne({username: req.body.username})
         .select('name username password').exec(function(err, user) {
             if(err) throw err;
@@ -121,6 +121,10 @@ module.exports = function(app, express) {
         });
     })
     ;
+
+    apiRouter.get('/me', function(req, res) {
+        res.send(req.decoded);
+    });
 
     return apiRouter;
 };

@@ -28,9 +28,9 @@ app.use('/api', apiRoutes);
 
 app.use(express.static(__dirname + '/app'));
 
-// app.get('*', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/app/index.html'));
-// });
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/app/index.html'));
+});
 
 app.listen(config.port);
 console.log('Magic happening on port', config.port);
