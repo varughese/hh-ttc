@@ -1,0 +1,28 @@
+{
+  "name": "hh-nhs",
+  "version": "1.0.0",
+  "description": "NHS Website",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.3",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varughese/hh-nhs.git"
+  },
+  "author": "Mathew Varughese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/varughese/hh-nhs/issues"
+  },
+  "homepage": "https://github.com/varughese/hh-nhs#readme"
+}
