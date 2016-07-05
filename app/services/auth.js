@@ -6,8 +6,11 @@ function AuthFactory($http, $q, AuthToken) {
             username: username,
             password: password
         })
-        .then(function(data) {
-            AuthToken.setToken(data.data.token);
+        .then(function(response) {
+            var data = response.data;
+            if(data.token) {
+                AuthToken.setToken(response.data.token);
+            }
             return data;
         });
     };

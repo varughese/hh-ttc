@@ -17,7 +17,8 @@ angular.module('nhs')
     $scope.login = function() {
         Auth.login($scope.userLogin.username, $scope.userLogin.password)
             .then(function(data) {
-                $state.go('users');
+                if(data.success) $state.go('users');
+                else $scope.error = "Incorrect username or password";
             });
     };
 

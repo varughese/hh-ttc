@@ -1,9 +1,18 @@
 var User = require('../models/user'),
+    CommunityService = require('../models/service'),
     config = require('../../config'),
     jwt = require('jsonwebtoken');
 
 module.exports = function(app, express) {
     var apiRouter = express.Router();
+
+    apiRouter.get('/events', function(req, res) {
+        CommunityService.find(function(err, events) {
+            if(err) res.send(err);
+
+            res.json(events);
+        });
+    });
 
     apiRouter.post('/token', function(req, res) {
         User.findOne({username: req.body.username})
@@ -77,9 +86,9 @@ module.exports = function(app, express) {
         user.save(function(err) {
             if(err) {
                 if(err.code == 11000)
-                return res.json({success: false, message: 'username already exists'});
+                    return res.json({success: false, message: 'username already exists'});
                 else
-                return res.send(err);
+                    return res.send(err);
             }
             res.json({message: 'User Created!'});
         });
@@ -121,6 +130,44 @@ module.exports = function(app, express) {
         });
     })
     ;
+
+    apiRouter.param('user_id', function(req, res, next, id) {
+        var query = User.findById(id);
+
+        query.exec(function (err, user){
+            if (err) { return next(err); }
+            if (!user) { return next(new Error('can\'t find user')); }
+
+            req.user = user;
+            return next();
+        });
+    });
+
+    apiRouter.route('/users/:user_id/events')
+        .get(function(req, res) {
+            req.user.populate('events', function(err, event) {
+                if (err) return res.send(err);
+
+                res.json(event);
+            });
+        })
+        .post(function(req, res) {
+            var vevent = new CommunityService();
+            vevent.name = req.body.name;
+            vevent.hours = req.body.hours;
+            vevent.user = req.user;
+
+            vevent.save(function(err, vevent) {
+                if(err) return res.send(err);
+
+                req.user.events.push(vevent);
+                req.user.save(function(err, user) {
+                    if(err) return res.send(err);
+                    res.json(user);
+                });
+            });
+        });
+
 
     apiRouter.get('/me', function(req, res) {
         res.send(req.decoded);

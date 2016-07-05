@@ -10,19 +10,26 @@
     <body ng-app="nhs" ng-controller="mainController">
         <header>
         	<div class="navbar navbar-inverse" ng-if="loggedIn">
-        	<div class="container">
-        		<div class="navbar-header">
-        			<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-fire text-danger"></span> User CRM</a>
-        		</div>
-        		<ul class="nav navbar-nav">
-        			<li><a ui-sref="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-        		</ul>
-        		<ul class="nav navbar-nav navbar-right">
-        			<li ng-if="!loggedIn"><a href="/login">Login</a></li>
-        			<li ng-if="loggedIn" class="navbar-text">Hello {{ user.username }}!</li>
-        			<li ng-if="loggedIn"><a href="#" ng-click="logout()">Logout</a></li>
-        		</ul>
-        	</div>
+            	<div class="container">
+            		<div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+            			<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-pushpin"></span> HH NHS</a>
+            		</div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a ui-sref="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li ng-if="!loggedIn"><a href="/login">Login</a></li>
+                            <li ng-if="loggedIn" class="navbar-text">Hello {{ user.username }}!</li>
+                            <li ng-if="loggedIn"><a href="#" ng-click="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+            	</div>
         	</div>
         </header>
 
@@ -30,7 +37,8 @@
         <main class="container">
             <div ui-view></div>
         </main>
-
+        <script src="lib/js/jquery.js"></script>
+        <script src="lib/js/bootstrap.js"></script>
         <script src="lib/js/angular.js"></script>
         <script src="lib/js/angular-ui-router.js"></script>
         <script src="app.js"></script>
