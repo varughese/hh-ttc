@@ -2,11 +2,8 @@ angular.module('nhs')
 
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/');
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
+    $urlRouterProvider.otherwise('/users');
+
     $stateProvider
         .state('login', {
             url: "/login",
@@ -24,7 +21,7 @@ angular.module('nhs')
         })
         .state('userEdit', {
             url: "/users/:userID",
-            templateUrl: "templates/user-edit.html",
+            templateUrl: "templates/user-create.html",
             controller: "userEdit"
         })
         ;

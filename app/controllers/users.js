@@ -44,7 +44,7 @@ angular.module('nhs')
 
     User.get($stateParams.userID)
         .then(function(data) {
-            $scope.userData = data;
+            $scope.userData = data.data;
         });
 
     $scope.saveUser = function() {
@@ -55,7 +55,7 @@ angular.module('nhs')
             .then(function(data) {
                 $scope.processing = false;
                 $scope.userData = {};
-                $scope.message = data.message;
+                $scope.message = data.data.message;
             });
     };
 }])

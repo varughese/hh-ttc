@@ -2,11 +2,34 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NHS</title>
+        <link href="lib/css/bootstrap.css" rel="stylesheet">
     </head>
     <body ng-app="nhs" ng-controller="mainController">
-        <div ng-if="loggedIn"> Navbar! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
-        <div ui-view></div>
+        <header>
+        	<div class="navbar navbar-inverse" ng-if="loggedIn">
+        	<div class="container">
+        		<div class="navbar-header">
+        			<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-fire text-danger"></span> User CRM</a>
+        		</div>
+        		<ul class="nav navbar-nav">
+        			<li><a ui-sref="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+        		</ul>
+        		<ul class="nav navbar-nav navbar-right">
+        			<li ng-if="!loggedIn"><a href="/login">Login</a></li>
+        			<li ng-if="loggedIn" class="navbar-text">Hello {{ user.username }}!</li>
+        			<li ng-if="loggedIn"><a href="#" ng-click="logout()">Logout</a></li>
+        		</ul>
+        	</div>
+        	</div>
+        </header>
+
+
+        <main class="container">
+            <div ui-view></div>
+        </main>
 
         <script src="lib/js/angular.js"></script>
         <script src="lib/js/angular-ui-router.js"></script>
