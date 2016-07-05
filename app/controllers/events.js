@@ -8,7 +8,7 @@ angular.module('nhs')
         .then(function(data) {
             $scope.processing = false;
 
-            $scope.events = data.data;
+            $scope.events = data;
         });
     }
 

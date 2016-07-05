@@ -34,6 +34,11 @@ angular.module('nhs')
             templateUrl: "templates/add-event.html",
             controller: "addEvent"
         })
+        .state('eventEdit', {
+            url: "/edit/event/:eventID",
+            templateUrl: "templates/add-event.html",
+            controller: "editEvent"
+        })
         ;
 }])
 

@@ -170,11 +170,18 @@ module.exports = function(app, express) {
         });
 
     apiRouter.route('/users/:user_id/events/:event_id')
+        .get(function(req, res) {
+            CommunityService.findById(req.params.event_id, function(err, evt) {
+                res.json(evt);
+            });
+        })
         .put(function(req, res) {
-            CommunityService.findById(req.params.event, function(err, event) {
+            CommunityService.findById(req.params.event_id, function(err, event) {
+                if(err) res.send(err);
+
                 if(req.body.name) event.name = req.body.name;
-                if(req.body.username) event.hours = req.body.hours;
-                if(req.body.password) event.checked = req.body.checked;
+                if(req.body.hours) event.hours = req.body.hours;
+                if(req.body.checked) event.checked = req.body.checked;
 
                 event.save(function(err) {
                     if(err) res.send(err);
