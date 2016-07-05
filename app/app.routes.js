@@ -24,6 +24,11 @@ angular.module('nhs')
             templateUrl: "templates/user-create.html",
             controller: "userEdit"
         })
+        .state('events', {
+            url: "/events",
+            templateUrl: "templates/events.html",
+            controller: "eventsController"
+        })
         .state('addEvent', {
             url: "/add/event",
             templateUrl: "templates/add-event.html",

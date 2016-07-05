@@ -1,0 +1,37 @@
+<div class="page-header">
+	<h1>
+		Events
+		<a ui-sref="addEvent" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span>
+			New Event
+		</a>
+	</h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="user.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Events...</p>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="events">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Hours</th>
+            <th>Checked</th>
+			<th class="col-sm-2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="event in events">
+			<td>{{ event.name }}</td>
+			<td>{{ event.hours }}</td>
+			<td>{{ event.checked }}</td>
+			<td class="col-sm-2">
+				<a ui-sref="eventEdit({eventID: '{{ event._id }}'})" class="btn btn-danger">Edit</a>
+				<a href="#/events" ng-click="deleteEvent(event._id)" class="btn btn-primary">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

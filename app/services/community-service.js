@@ -3,7 +3,7 @@ angular.module('nhs')
 
 	// create a new object
 	var eventFactory = {};
-    var id = $rootScope.user._id;
+    var id = $rootScope.user.id;
 	// get a single users events
 	eventFactory.get = function() {
 		return $http.get('/api/users/' + id + '/events')
@@ -19,17 +19,17 @@ angular.module('nhs')
 
 	// create a user
 	eventFactory.create = function(eventData) {
-		return $http.post('/api/users/' + id + '/event', eventData);
+		return $http.post('/api/users/' + id + '/events', eventData);
 	};
 
 	// update a user
 	eventFactory.update = function(eventData) {
-		return $http.put('/api/users/' + id + '/event', eventData);
+		return $http.put('/api/users/' + id + '/events', eventData);
 	};
 
 	// delete a user
-	eventFactory.delete = function() {
-		return $http.delete('/api/users/' + id) + '/event';
+	eventFactory.delete = function(eventID) {
+		return $http.delete('/api/users/' + id + '/events/' + eventID);
 	};
 
 	// return our entire eventFactory object

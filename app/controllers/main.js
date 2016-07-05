@@ -9,7 +9,7 @@ angular.module('nhs')
 
             Auth.getUser()
                 .then(function(data) {
-                    $scope.user = data.data;
+                    $rootScope.user = data.data;
                 });
 
         });

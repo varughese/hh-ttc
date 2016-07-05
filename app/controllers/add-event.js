@@ -1,15 +1,10 @@
 angular.module('nhs')
 
-.controller('addEvent', ['$state', 'CommunityService', function($state, CommunityService) {
+.controller('addEvent', ['$scope', '$state', 'CommunityService', function($scope, $state, CommunityService) {
     $scope.serviceEvent = {};
 
-    CommunityService.get()
-        .then(function(events) {
-            $scope.events = events;
-        });
-
     $scope.addEvent = function() {
-        CommunityService.add($scope.serviceEvent);
+        CommunityService.create($scope.serviceEvent);
     };
 
 }]);

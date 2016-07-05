@@ -169,6 +169,28 @@ module.exports = function(app, express) {
             });
         });
 
+    apiRouter.route('/users/:user_id/events/:event_id')
+        .put(function(req, res) {
+            CommunityService.findById(req.params.event, function(err, event) {
+                if(req.body.name) event.name = req.body.name;
+                if(req.body.username) event.hours = req.body.hours;
+                if(req.body.password) event.checked = req.body.checked;
+
+                event.save(function(err) {
+                    if(err) res.send(err);
+
+                    res.json({message: 'Event updated'});
+                });
+            });
+        })
+        .delete(function(req, res) {
+            CommunityService.remove({
+                _id: req.params.event_id
+            }, function(err, user) {
+                if(err) return res.send(err);
+                res.json({message: 'succesfully deleted'});
+            });
+        });
 
     apiRouter.get('/me', function(req, res) {
         res.send(req.decoded);
