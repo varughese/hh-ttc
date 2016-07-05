@@ -1,2 +1,9 @@
 <p>users</p>
 <pre>{{ users | json }}</pre>
+<table>
+    <tr ng-repeat="user in users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.password }}</td>
+        <td><button ui-sref="userEdit({userID: '{{user._id }}' })">Edit</button></td>
+    </tr>
+</table>

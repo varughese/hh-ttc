@@ -22,7 +22,7 @@ angular.module('nhs')
             templateUrl: "templates/user-create.html",
             controller: "userCreate"
         })
-        .state('usersEdit', {
+        .state('userEdit', {
             url: "/users/:userID",
             templateUrl: "templates/user-edit.html",
             controller: "userEdit"
