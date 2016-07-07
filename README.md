@@ -65,7 +65,7 @@ $scope.user = {
   password: deeznuts
 }
 ```
-### Events
+#### Events
 ```js
 $scope.events = [
   {
