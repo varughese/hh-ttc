@@ -4,10 +4,12 @@ NHS Website
 
 ## Screens Description
 
-Right now the files in `app` folder are a janky front end. Make your changes into a `public` folder and use http-server to run the public folder. Use `grunt` if you want to but you can just copy and paste libs into this. You can run `nodemon server.js` and then go to `localhost:8080` if you wanna check out what it looks like right now.
+Right now the files in `app` folder are a janky front end. Make your changes into a `public` folder and use http-server to run the `public` folder. Use `grunt` if you want to but you can just copy and paste libs into this. You can run `nodemon server.js` and then go to `localhost:8080` if you wanna check out what it looks like right now.
 
 
 Each one of these screens will have its own controller. Make the names make sense and set it up like you set up the form designer.
+
+Make sure you make each little thing its own function so that when I connect the RestAPI it will actually be able to save the data if I just add to your functions. 
 
 ### Login
 - Username
