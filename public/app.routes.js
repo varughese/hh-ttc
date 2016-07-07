@@ -15,12 +15,12 @@ angular.module('nhs')
             templateUrl: "templates/dashboard.html",
             controller: "dashboard"
         })
-        .state("userCreate", {
+        .state("create", {
             url: "/dashboard/create",
             templateUrl: "templates/dashboard-create.html",
             controller: "dashCreate"
         })
-        .state("usersEdit", {
+        .state("edit", {
             url: "/dashboard/:userID",
             templateUrl: "templates/dashboard-edit.html",
             controller: "dashEdit"
