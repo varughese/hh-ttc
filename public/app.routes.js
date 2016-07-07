@@ -15,15 +15,20 @@ angular.module('nhs')
             templateUrl: "templates/dashboard.html",
             controller: "dashboard"
         })
-        .state("create", {
-            url: "/dashboard/create",
-            templateUrl: "templates/dashboard-create.html",
-            controller: "dashCreate"
+        .state("event", {
+            url: "/event",
+            template: "<div ui-view></div>",
+            abstract: true
         })
-        .state("edit", {
-            url: "/dashboard/:userID",
-            templateUrl: "templates/dashboard-edit.html",
-            controller: "dashEdit"
+        .state("event.create", {
+            url: "/create",
+            templateUrl: "templates/event.html",
+            controller: "eventCreate"
+        })
+        .state("event.edit", {
+            url: "/edit:eventID",
+            templateUrl: "templates/event.html",
+            controller: "eventEdit"
         })
         ;
 }])
