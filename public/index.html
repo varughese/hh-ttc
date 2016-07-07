@@ -5,7 +5,7 @@
         <title>NHS</title>
     </head>
     <body ng-app="nhs" ng-controller="main">
-        <div ng-hide="$state.includes('login')"> Welcome {{username}} !! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
+        <div ng-hide="$state.includes('login')"> Welcome {{user.username}} !! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
         <div ui-view></div>
 
         <script src="lib/js/angular.js"></script>
