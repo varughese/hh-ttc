@@ -1,13 +1,9 @@
 angular.module('nhs')
 
-.controller('login', ['$scope', "$state", function($scope, $state){
+.controller('login', ['$scope', "$state", "$rootScope", function($scope, $state, $rootScope){
     $scope.login = function(){
-        $scope.user = {
-            loggedIn: true,
-            username: "jason",
-            password: "deeznuts"
-        };
-
+        $scope.user.loggedOn = true;
+        $rootScope.user = $scope.user;
         $state.go('dashboard');
     };
 }]);

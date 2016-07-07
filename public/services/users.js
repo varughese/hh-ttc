@@ -1,11 +1,14 @@
 angular.module('nhs')
 
-.service("users", function(){
-    var users = {
-        username: '',
-        password: '',
-        loggedIn: false
-    };
-})
+.service("users", ["user", function(user){
+    return user;
+    // {
+    //     user:{
+    //         username: "jason",
+    //         password: "jasonjason",
+    //         loggedOn: true
+    //     }
+    // };
+}])
 
 ;
