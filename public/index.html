@@ -1,20 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>NHS</title>
     </head>
-    <body ng-app="nhs" ng-controller="mainController">
-        <div ng-if="loggedIn"> Navbar! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
+    <body ng-app="nhs" ng-controller="main">
+        <div ng-show="$state.includes('dashboard')"> Welcome {{username}} !! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
         <div ui-view></div>
 
         <script src="lib/js/angular.js"></script>
         <script src="lib/js/angular-ui-router.js"></script>
         <script src="app.js"></script>
         <script src="app.routes.js"></script>
-        <script src="services/auth.js"></script>
-        <script src="services/users.js"></script>
         <script src="controllers/main.js"></script>
-        <script src="controllers/users.js"></script>
+        <script src="controllers/dashboard.js"></script>
     </body>
 </html>
