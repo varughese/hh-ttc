@@ -11,6 +11,8 @@ Each one of these screens will have its own controller. Make the names make sens
 
 Make sure you make each little thing its own function so that when I connect the RestAPI it will actually be able to save the data if I just add to your functions. 
 
+Also design this in emulator mode because everyone is going to use it on their phones.
+
 ### Login
 - Username
 - Password
