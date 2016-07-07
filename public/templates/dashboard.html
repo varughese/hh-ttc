@@ -1,4 +1,4 @@
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Event</th>
@@ -9,11 +9,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat = "event in events">
+        <tr ng-repeat="event in events">
             <td>{{event.name}}</td>
             <td>{{event.hours}}</td>
             <td>{{event.date}}</td>
-            <td></td>
+            <td><span class="glyphicon glyphicon-wrench" ui-sref="event.edit({eventID: '{{event._id}}' })"></span></td>
             <td></td>
         </tr>
     </tbody>
@@ -21,4 +21,4 @@
 
 <h3>Total Hours: {{findTotal()}}</h3>
 
-<pre>user = {{user | json}}</pre>
+<pre>events = {{events | json}}</pre>

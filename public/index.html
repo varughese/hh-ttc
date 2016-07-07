@@ -8,7 +8,7 @@
         <title>NHS</title>
     </head>
     <body ng-app="nhs" ng-controller="main">
-        <div ng-hide="state.includes('login')"> Welcome {{user.username}} !! <button ui-sref="event.create">Create</button><button ui-sref="event.edit">Edit</button></div>
+        <div ng-hide="state.includes('login')"> <a ui-sref="dashboard">Welcome {{user.username}}</a> !! <button ui-sref="event.create">Create</button><button ui-sref="event.edit">Edit</button></div>
         <div ui-view></div>
 
         <script src="lib/js/angular.js"></script>

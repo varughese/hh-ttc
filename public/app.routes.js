@@ -26,7 +26,7 @@ angular.module('nhs')
             controller: "eventCreate"
         })
         .state("event.edit", {
-            url: "/edit:eventID",
+            url: "/edit/:eventID",
             templateUrl: "templates/event.html",
             controller: "eventEdit"
         })
