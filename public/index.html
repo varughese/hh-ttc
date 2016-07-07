@@ -5,7 +5,7 @@
         <title>NHS</title>
     </head>
     <body ng-app="nhs" ng-controller="main">
-        <div ng-show="$state.includes('dashboard')"> Welcome {{username}} !! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
+        <div ng-hide="$state.includes('login')"> Welcome {{username}} !! <button ui-sref="userCreate">Create</button><button>Edit</button></div>
         <div ui-view></div>
 
         <script src="lib/js/angular.js"></script>
@@ -13,6 +13,7 @@
         <script src="app.js"></script>
         <script src="app.routes.js"></script>
         <script src="controllers/main.js"></script>
+        <script src="controllers/login.js"></script>
         <script src="controllers/dashboard.js"></script>
     </body>
 </html>

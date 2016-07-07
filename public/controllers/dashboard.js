@@ -1,5 +1,7 @@
 angular.module('nhs')
 
-.controller('dashboard')
+.controller('dashboard', ['$scope', "$state", function($scope, $state){
+
+}])
 
 ;
