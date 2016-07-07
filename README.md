@@ -39,12 +39,14 @@ For Date input field try experimenting with angular-ui-bootstrap's Date Picker. 
 The Edit and Create html will be so similar that you will just use the same template for both. Check into `ng-if`. Each one will have a different button depending on the the type. Each one of these screens will have its own controller. 
 
 #### Edit  
+- These `state` needs a `eventID` parameter.
 - Should just be able to edit all event properties
 - Save button
   - Saves individual ID in `events` array on scope
   - Takes you back to dashboard
 
 #### Create
+- These `state` *does not* need a parameter.
 - Should have inputs for all appropiate fields 
 - Create button
    - Pushs `eventData` onto `events` on scope
@@ -72,7 +74,7 @@ $scope.events = [
     checked: false // later this will be used to check if Lauren checked it or not
   },
   {
-    _id: 1,
+    _id: 2,
     name: "Blood Drive",
     date: "5/16/2015", // may be a different Date format depending on how you save it
     hours: 3,
