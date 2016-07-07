@@ -11,11 +11,19 @@ angular.module('nhs')
 .controller('eventEdit', ['$scope', "$state", "$rootScope", '$stateParams', function($scope, $state, $rootScope, $stateParams){
     var id = Number($stateParams.eventID);
     var event = {};
-    angular.forEach($rootScope.events, function(e) {
+    var pos = 0;
+
+    angular.forEach($rootScope.events, function(e, i) {
         if(e._id === id) {
             $scope.eventData = e;
+            pos = i;
         }
     });
+
+    $scope.saveEvent = function(){
+        $rootScope.events[pos] = $scope.eventData;
+        $state.go("dashboard");
+    };
 }])
 
 ;

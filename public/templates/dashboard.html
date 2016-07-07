@@ -14,7 +14,7 @@
             <td>{{event.hours}}</td>
             <td>{{event.date}}</td>
             <td><span class="glyphicon glyphicon-wrench" ui-sref="event.edit({eventID: '{{event._id}}' })"></span></td>
-            <td></td>
+            <td><span class="glyphicon glyphicon-trash" ng-click="removeEvent(event._id, $index)"></span></td>
         </tr>
     </tbody>
 </table>
