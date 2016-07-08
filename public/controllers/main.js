@@ -5,6 +5,8 @@ angular.module('nhs')
 })
 
 .controller('main', ['$scope', '$rootScope', '$state', 'Auth', function($scope, $rootScope, $state, Auth){
+    $rootScope.user = $rootScope.user || {};
+
     $scope.getState = function() {
         return $state.current.name;
     };
@@ -17,7 +19,7 @@ angular.module('nhs')
                 $rootScope.user.loggedIn = true;
             })
             .catch(function(err) {
-                console.log(err);
+                if(toState.name !== "login") $state.go('login');
             });
 
     });

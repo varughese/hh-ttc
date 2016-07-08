@@ -11,8 +11,10 @@ function AuthFactory($http, $q, AuthToken) {
             var data = response.data;
             if(data.token) {
                 AuthToken.setToken(response.data.token);
+                return data;
+            } else {
+                throw data.message;
             }
-            return data;
         });
     };
 
