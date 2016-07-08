@@ -3,4 +3,8 @@ angular.module('nhs', [
     'nhs.auth'
 ])
 
+.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
+}])
+
 ;

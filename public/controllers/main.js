@@ -4,10 +4,31 @@ angular.module('nhs')
     $rootScope.state = $state;
 })
 
-.controller('main', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state){
+.controller('main', ['$scope', '$rootScope', '$state', 'Auth', function($scope, $rootScope, $state, Auth){
     $scope.getState = function() {
         return $state.current.name;
     };
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
+
+        Auth.getUser()
+            .then(function(data) {
+                $rootScope.user = data.data;
+                $rootScope.user.loggedIn = true;
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
+
+    });
+
+    $scope.logout = function() {
+        Auth.logout();
+        $rootScope.user = {};
+        $rootScope.user.loggedIn = false;
+        $state.go("login");
+    };
+
     var events = [
         {
             _id: 1,

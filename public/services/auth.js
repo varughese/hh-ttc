@@ -20,12 +20,12 @@ function AuthFactory($http, $q, AuthToken) {
         AuthToken.setToken();
     };
 
-    auth.isLoggedIn = function() {
+    auth.loggedIn = function() {
         return !!AuthToken.getToken();
     };
 
     auth.getUser = function() {
-        if(auth.isLoggedIn())
+        if(auth.loggedIn())
             return $http.get('/api/me', { cache: true });
         else
             return $q.reject({ message: 'User has no token.'});

@@ -26,10 +26,10 @@ mongoose.connect(config.database);
 var apiRoutes = require('./server/routes/api')(app, express);
 app.use('/api', apiRoutes);
 
-app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/app/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.listen(config.port);
