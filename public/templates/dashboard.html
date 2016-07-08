@@ -1,0 +1,35 @@
+<h2>
+    Events
+    <a ui-sref="event.create" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span>
+        Add
+	</a>
+</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Hours</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="event in events">
+            <td>{{event.name}}</td>
+            <td>{{event.hours}}</td>
+            <td>{{event.date}}</td>
+            <td><span class="glyphicon glyphicon-wrench" ui-sref="event.edit({eventID: '{{event._id}}' })"></span></td>
+            <td><span class="glyphicon glyphicon-trash" ng-click="removeEvent(event._id, $index)"></span></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <td><strong>Total Hours:</strong></td>
+        <td><strong></strong>{{findTotal()}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tfoot>
+</table>
