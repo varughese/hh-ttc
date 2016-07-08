@@ -1,5 +1,32 @@
-<form ng-submit = "login()">
-    <input ng-model="user.username" required/>
-    <input type="password" ng-model="user.password" required />
-    <button type="submit" class="btn btn-block btn-primary"><span>Login</span></button>
-</form>
+<div class="row col-md-6 col-md-offset-3">
+
+    <img src="../images/nhs-logo.jpeg" />
+
+	<div class="jumbotron">
+		<h1>Login</h1>
+
+		<form ng-submit="login()">
+
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" required class="form-control" ng-model="user.username">
+			</div>
+
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" required ng-model="user.password">
+			</div>
+
+			<div class="alert alert-danger" ng-if="user.error">
+				{{ user.error }}
+			</div>
+
+			<button type="submit" class="btn btn-block btn-primary">
+				<span ng-if="!user.processing">Login</span>
+				<span ng-if="user.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
+			</button>
+
+		</form>
+	</div>
+
+</div>
