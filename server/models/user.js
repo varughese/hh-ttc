@@ -6,7 +6,7 @@ var UserSchema = new Schema({
     name: String,
     username: { type: String, required: true, index: { unique: true}},
     password: { type: String, required: true, select: false},
-    events: [ { type: Schema.Types.ObjectId, ref: 'CommunityService'}]
+    events: [ { type: Schema.Types.ObjectId, ref: 'Events'}]
 });
 
 UserSchema.pre('save', function(next) {

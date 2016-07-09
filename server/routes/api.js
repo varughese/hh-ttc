@@ -1,18 +1,11 @@
 var User = require('../models/user'),
-    CommunityService = require('../models/service'),
+    Event = require('../models/event'),
     config = require('../../config'),
     jwt = require('jsonwebtoken');
 
 module.exports = function(app, express) {
     var apiRouter = express.Router();
 
-    apiRouter.get('/events', function(req, res) {
-        CommunityService.find(function(err, events) {
-            if(err) res.send(err);
-
-            res.json(events);
-        });
-    });
 
     apiRouter.post('/token', function(req, res) {
         User.findOne({username: req.body.username})
@@ -78,61 +71,61 @@ module.exports = function(app, express) {
     });
 
     apiRouter.route('/users')
-    .post(function(req, res) {
-        var user = new User();
-        user.name = req.body.name;
-        user.username = req.body.username;
-        user.password = req.body.password;
-
-        user.save(function(err) {
-            if(err) {
-                if(err.code == 11000)
-                    return res.json({success: false, message: 'username already exists'});
-                else
-                    return res.send(err);
-            }
-            res.json({message: 'User Created!'});
-        });
-    })
-    .get(function(req, res) {
-        User.find(function(err, users) {
-            if(err) res.send(err);
-
-            res.json(users);
-        });
-    })
-    ;
-
-    apiRouter.route('/users/:user_id')
-    .get(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
-            res.json(user);
-        });
-    })
-    .put(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
-            if(req.body.name) user.name = req.body.name;
-            if(req.body.username) user.username = req.body.username;
-            if(req.body.password) user.password = req.body.password;
+        .post(function(req, res) {
+            var user = new User();
+            user.name = req.body.name;
+            user.username = req.body.username;
+            user.password = req.body.password;
 
             user.save(function(err) {
+                if(err) {
+                    if(err.code == 11000)
+                        return res.json({success: false, message: 'username already exists'});
+                    else
+                        return res.send(err);
+                }
+                res.json({message: 'User Created!'});
+            });
+        })
+        .get(function(req, res) {
+            User.find(function(err, users) {
                 if(err) res.send(err);
 
-                res.json({message: 'User updated'});
+                res.json(users);
             });
-        });
-    })
-    .delete(function(req, res) {
-        User.remove({
-            _id: req.params.user_id
-        }, function(err, user) {
-            if(err) return res.send(err);
-            res.json({message: 'succesfully deleted'});
-        });
-    })
+        })
     ;
 
-    apiRouter.param('user_id', function(req, res, next, id) {
+    apiRouter.route('/users/:userID')
+        .get(function(req, res) {
+            User.findById(req.params.userID, function(err, user) {
+                res.json(user);
+            });
+        })
+        .put(function(req, res) {
+            User.findById(req.params.userID, function(err, user) {
+                if(req.body.name) user.name = req.body.name;
+                if(req.body.username) user.username = req.body.username;
+                if(req.body.password) user.password = req.body.password;
+
+                user.save(function(err) {
+                    if(err) res.send(err);
+
+                    res.json({message: 'User updated'});
+                });
+            });
+        })
+        .delete(function(req, res) {
+            User.remove({
+                _id: req.params.userID
+            }, function(err, user) {
+                if(err) return res.send(err);
+                res.json({message: 'succesfully deleted'});
+            });
+        })
+    ;
+
+    apiRouter.param('userID', function(req, res, next, id) {
         var query = User.findById(id);
 
         query.exec(function (err, user){
@@ -144,7 +137,7 @@ module.exports = function(app, express) {
         });
     });
 
-    apiRouter.route('/users/:user_id/events')
+    apiRouter.route('/users/:userID/events')
         .get(function(req, res) {
             req.user.populate('events', function(err, event) {
                 if (err) return res.send(err);
@@ -153,15 +146,16 @@ module.exports = function(app, express) {
             });
         })
         .post(function(req, res) {
-            var vevent = new CommunityService();
-            vevent.name = req.body.name;
-            vevent.hours = req.body.hours;
-            vevent.user = req.user;
+            var event = new Event();
+            event.name = req.body.name;
+            event.date = new Date(req.body.date);
+            event.hours = req.body.hours;
+            event.user = req.user;
 
-            vevent.save(function(err, vevent) {
+            event.save(function(err, event) {
                 if(err) return res.send(err);
 
-                req.user.events.push(vevent);
+                req.user.events.push(event);
                 req.user.save(function(err, user) {
                     if(err) return res.send(err);
                     res.json(user);
@@ -169,7 +163,7 @@ module.exports = function(app, express) {
             });
         });
 
-    apiRouter.route('/users/:user_id/events/:event_id')
+    apiRouter.route('/users/:userID/events/:event_id')
         .get(function(req, res) {
             CommunityService.findById(req.params.event_id, function(err, evt) {
                 res.json(evt);
