@@ -30,7 +30,7 @@ module.exports = function(app, express) {
                         username: user.username,
                         id: user._id
                     }, config.secret, {
-                        expiresIn: 60*24
+                        expiresIn: 60*60*24
                     });
 
                     res.json({
@@ -139,10 +139,10 @@ module.exports = function(app, express) {
 
     apiRouter.route('/users/:userID/events')
         .get(function(req, res) {
-            req.user.populate('events', function(err, event) {
+            req.user.populate('events', function(err, user) {
                 if (err) return res.send(err);
 
-                res.json(event);
+                res.json(user.events);
             });
         })
         .post(function(req, res) {
@@ -163,18 +163,19 @@ module.exports = function(app, express) {
             });
         });
 
-    apiRouter.route('/users/:userID/events/:event_id')
+    apiRouter.route('/users/:userID/events/:eventID')
         .get(function(req, res) {
-            CommunityService.findById(req.params.event_id, function(err, evt) {
+            Event.findById(req.params.eventID, function(err, evt) {
                 res.json(evt);
             });
         })
         .put(function(req, res) {
-            CommunityService.findById(req.params.event_id, function(err, event) {
-                if(err) res.send(err);
+            Event.findById(req.params.eventID, function(err, event) {
+                if(err) return res.send(err);
 
                 if(req.body.name) event.name = req.body.name;
                 if(req.body.hours) event.hours = req.body.hours;
+                if(req.body.date) event.date = new Date(req.body.date);
                 if(req.body.checked) event.checked = req.body.checked;
 
                 event.save(function(err) {
@@ -185,8 +186,8 @@ module.exports = function(app, express) {
             });
         })
         .delete(function(req, res) {
-            CommunityService.remove({
-                _id: req.params.event_id
+            Event.remove({
+                _id: req.params.eventID
             }, function(err, user) {
                 if(err) return res.send(err);
                 res.json({message: 'succesfully deleted'});
