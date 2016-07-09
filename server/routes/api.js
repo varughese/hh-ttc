@@ -28,7 +28,8 @@ module.exports = function(app, express) {
                     var token = jwt.sign({
                         name: user.name,
                         username: user.username,
-                        id: user._id
+                        id: user._id,
+                        admin: user.admin
                     }, config.secret, {
                         expiresIn: 60*60*24
                     });
@@ -76,6 +77,7 @@ module.exports = function(app, express) {
             user.name = req.body.name;
             user.username = req.body.username;
             user.password = req.body.password;
+            if(req.body.admin) user.admin = true;
 
             user.save(function(err) {
                 if(err) {
