@@ -30,6 +30,7 @@ module.exports = function(apiRouter) {
             if(req.body.timeEnd) uevent.timeEnd = req.body.timeEnd;
             if(req.body.date) uevent.date = req.body.date;
             if(req.body.description) uevent.description = req.body.description;
+            if(req.body.location) uevent.location = req.body.location;
 
             uevent.save(function(err) {
                 if(err) res.send(err);

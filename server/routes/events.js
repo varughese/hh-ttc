@@ -61,7 +61,10 @@ module.exports = function(apiRouter) {
         });
 
     apiRouter.get('/upcoming-events', function(req, res) {
-        UpcomingEvent.find(function(err, uevents) {
+        var filter = new RegExp("m","i");
+        UpcomingEvent.find()
+        .where('name').regex(filter)
+        .exec(function(err, uevents) {
             if(err) res.send(err);
 
             res.json(uevents);

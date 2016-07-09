@@ -15,6 +15,7 @@ var UpcomingEventSchema = new Schema({
     timeStart: Date,
     timeEnd: Date,
     date: Date,
+    location: String,
     description: String
 });
 
