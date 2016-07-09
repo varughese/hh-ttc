@@ -10,4 +10,15 @@ var EventSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-module.exports = mongoose.model('Events', EventSchema);
+var UpcomingEventSchema = new Schema({
+    name: { type: String, required: true },
+    timeStart: Date,
+    timeEnd: Date,
+    date: Date,
+    description: String
+});
+
+module.exports = {
+    events: mongoose.model('Events', EventSchema),
+    upcomingEvents: mongoose.model('UpcomingEvents', UpcomingEventSchema)
+};

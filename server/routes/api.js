@@ -1,5 +1,6 @@
 var User = require('../models/user'),
-    Event = require('../models/event'),
+    Event = require('../models/event').events,
+    UpcomingEvent = require('../models/event').upcomingEvents,
     config = require('../../config'),
     jwt = require('jsonwebtoken');
 
@@ -9,7 +10,7 @@ module.exports = function(app, express) {
 
     apiRouter.post('/token', function(req, res) {
         User.findOne({username: req.body.username})
-        .select('name username password').exec(function(err, user) {
+        .select('name username password admin').exec(function(err, user) {
             if(err) throw err;
 
             if(!user) {
@@ -28,8 +29,8 @@ module.exports = function(app, express) {
                     var token = jwt.sign({
                         name: user.name,
                         username: user.username,
-                        id: user._id,
-                        admin: user.admin
+                        admin: user.admin,
+                        id: user._id
                     }, config.secret, {
                         expiresIn: 60*60*24
                     });
@@ -199,6 +200,37 @@ module.exports = function(app, express) {
     apiRouter.get('/me', function(req, res) {
         res.send(req.decoded);
     });
+
+    apiRouter.get('/upcoming-events', function(req, res) {
+        UpcomingEvent.find(function(err, uevents) {
+            if(err) res.send(err);
+
+            res.json(uevents);
+        });
+    });
+
+
+    var checkAdmin = function(req, res, next) {
+        console.log("BOL IS AN ADMIN?", req.decoded.admin);
+        if(req.decoded.admin) {
+            next();
+        } else {
+            res.send({message: "You are not an admin!"});
+        }
+
+    };
+
+    apiRouter.route('/upcoming-events')
+        .all(checkAdmin)
+        .post(function(req, res) {
+            var event = new UpcomingEvent(req.body);
+
+            event.save(function(err, event) {
+                if(err) return res.send(err);
+
+                res.json({message: "Upcoming event saved!"});
+            });
+        });
 
     return apiRouter;
 };
