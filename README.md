@@ -8,17 +8,9 @@ NHS Website
   
 - Click on the green `clone or download` button above. Click download zip.
 - Open it up and unzip it. That means drag the folder onto your Desktop. Google how to unzip if you cant figure this out.
-- Open up a Command Prompt as an Administrator. 
-  - Tutorial: [Follow these Instructions or read below](http://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/)
-  - `Win Key + R` (Win Key is bottom left next to `ctrl` key) 
-  - Type `cmd` and hit enter.
-  - Right click on Command Prompt in the taskbar. Right click the second menu and click `Run as Administrator`.
-  - Google for more info
-  
-- Type the following `npm install -g nodemon`
 - When thats done open up the `hh-nhs-master` folder that you saved.
 - Hold `Shift` and right click (you have to right click near the bottom of the window in a space that is white). Click open in command prompt.
-- Type the following `nodemon server.js`
+- Type the following `node server.js`
 - Open up a web browser and type in the following url `localhost:8080`
 
 You should now see the app!
