@@ -13,19 +13,23 @@ angular.module('nhs')
             });
     };
 
-    e.get = function(eventID) {
-        return $http.get(apiUrl + eventID)
-            .then(function(repsonse) {
-                return response.data;
-            });
-    };
-
     e.create = function(eventData) {
         return $http.post(apiUrl, eventData);
     };
 
-    e.update = function(eventData) {
+    e.get = function(eventID) {
+        return $http.get(apiUrl + eventID)
+            .then(function(response) {
+                return response.data;
+            });
+    };
+
+    e.update = function(eventID, eventData) {
         return $http.put(apiUrl + eventID, eventData);
+    };
+
+    e.delete = function(eventID) {
+        return $http.delete(apiUrl + eventID);
     };
 
     return e;

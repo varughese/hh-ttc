@@ -10,20 +10,21 @@ angular.module('nhs')
 }])
 
 .controller('eventEdit', ['$scope', "$state", "$rootScope", '$stateParams', 'Event', function($scope, $state, $rootScope, $stateParams, Event){
-    var id = Number($stateParams.eventID);
-    var event = {};
+    var eventID = $stateParams.eventID;
     var pos = 0;
 
-    angular.forEach($rootScope.events, function(e, i) {
-        if(e._id === id) {
-            $scope.eventData = e;
-            pos = i;
-        }
-    });
+    Event.get(eventID)
+        .then(function(event) {
+            $scope.eventData = event;
+        });
 
     $scope.saveEvent = function(){
-        $rootScope.events[pos] = $scope.eventData;
-        $state.go("dashboard");
+        Event.update(eventID, $scope.eventData)
+            .then(function() {
+                $state.go("dashboard");
+            });
+
+
     };
 }])
 
