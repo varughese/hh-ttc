@@ -1,14 +1,15 @@
 angular.module('nhs')
 
-.controller('eventCreate', ['$scope', "$state", "$rootScope", function($scope, $state, $rootScope){
+.controller('eventCreate', ['$scope', "$state", "$rootScope", "Event", function($scope, $state, $rootScope, Event){
     $scope.saveEvent = function(){
-        $scope.eventData._id = Number((Math.random() + "").substring(3, 10));
-        $rootScope.events.push($scope.eventData);
-        $state.go("dashboard");
+        Event.create($scope.eventData)
+            .then(function() {
+                $state.go("dashboard");
+            });
     };
 }])
 
-.controller('eventEdit', ['$scope', "$state", "$rootScope", '$stateParams', function($scope, $state, $rootScope, $stateParams){
+.controller('eventEdit', ['$scope', "$state", "$rootScope", '$stateParams', 'Event', function($scope, $state, $rootScope, $stateParams, Event){
     var id = Number($stateParams.eventID);
     var event = {};
     var pos = 0;

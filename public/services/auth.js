@@ -1,5 +1,5 @@
 
-function AuthFactory($http, $q, AuthToken) {
+function AuthFactory($http, $q, AuthToken, $cacheFactory) {
     var auth = {};
 
     auth.login = function(username, password) {
@@ -19,6 +19,7 @@ function AuthFactory($http, $q, AuthToken) {
     };
 
     auth.logout = function() {
+        $cacheFactory.get('$http').remove('/api/me/');
         AuthToken.setToken();
     };
 
@@ -28,7 +29,7 @@ function AuthFactory($http, $q, AuthToken) {
 
     auth.getUser = function() {
         if(auth.loggedIn())
-            return $http.get('/api/me', { cache: true });
+            return $http.get('/api/me/', { cache: true });
         else
             return $q.reject({ message: 'User has no token.'});
     };
@@ -73,7 +74,7 @@ function AuthInterceptorFactory($q, $injector, AuthToken) {
 
 angular.module('nhs.auth', [])
 
-    .factory('Auth', ['$http', '$q', 'AuthToken', AuthFactory])
+    .factory('Auth', ['$http', '$q', 'AuthToken', '$cacheFactory', AuthFactory])
     .factory('AuthToken', ['$window', AuthTokenFactory])
     .factory('AuthInterceptor', ['$q', '$injector', 'AuthToken', AuthInterceptorFactory])
 ;

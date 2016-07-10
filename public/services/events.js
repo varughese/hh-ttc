@@ -1,15 +1,31 @@
 angular.module('nhs')
 
 .factory("Event", ["$http", "$rootScope", "Auth", function($http, $rootScope,Auth){
-    var userID = $rootScope.user.id;
+    var userID = $rootScope.user.id,
+        apiUrl = '/api/users/' + userID + '/events/';
 
     var e = {};
 
     e.all = function() {
-        return $http.get('/api/users/' + userID + "/events/")
-            .then(function(events) {
-                return events.data;
+        return $http.get(apiUrl)
+            .then(function(repsonse) {
+                return repsonse.data;
             });
+    };
+
+    e.get = function(eventID) {
+        return $http.get(apiUrl + eventID)
+            .then(function(repsonse) {
+                return response.data;
+            });
+    };
+
+    e.create = function(eventData) {
+        return $http.post(apiUrl, eventData);
+    };
+
+    e.update = function(eventData) {
+        return $http.put(apiUrl + eventID, eventData);
     };
 
     return e;
