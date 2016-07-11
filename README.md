@@ -13,7 +13,7 @@ NHS Website
 - Type the following `node server.js`
 - Open up a web browser and type in the following url `localhost:8080`
 
-You should now see the app!
+You should see a login screen. Ask for a login.
 
 
 ## Screens Description
