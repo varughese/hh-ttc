@@ -1,5 +1,6 @@
 angular.module('nhs', [
     'ui.router',
+    'ui.bootstrap',
     'nhs.auth'
 ])
 
