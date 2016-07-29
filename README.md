@@ -20,6 +20,7 @@ You should see a login screen. Ask me or Jason for a login.
 # TODO
 - [x] AutoComplete
 - [ ] Padding on body in login screen
+- [ ] Reverse order of events on dashboard?
 - [ ] Create Account page
 - [ ] Lowercase username on login
 - [ ] New Upcoming Event page for Fromal
