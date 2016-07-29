@@ -37,50 +37,40 @@ angular.module('nhs')
 
 }])
 
-;
+.factory("UpcomingEvent", ["$http", "$rootScope", "Auth", function($http, $rootScope,Auth){
+    var apiUrl = '/api/upcoming-events/';
 
+    var e = {};
 
-angular.module('nhs')
-.factory('CommunityService', ['$http', '$rootScope', function($http, $rootScope) {
+    e.all = function() {
+        return $http.get(apiUrl)
+            .then(function(repsonse) {
+                return repsonse.data;
+            });
+    };
 
-	// create a new object
-	var eventFactory = {};
-    var id = $rootScope.user.id;
-	// get a single users events
-	eventFactory.get = function(eventID) {
-		return $http.get('/api/users/' + id + '/events/' + eventID)
+    e.create = function(eventData) {
+        return $http.post(apiUrl, eventData);
+    };
+
+    e.get = function(eventID) {
+        return $http.get(apiUrl + eventID)
             .then(function(response) {
                 return response.data;
             });
-	};
+    };
 
-	// get all users
-	eventFactory.all = function() {
-		return $http.get('/api/users/' + id + '/events/')
-			.then(function(response) {
-				return response.data.events;
-			});
-	};
+    e.update = function(eventID, eventData) {
+        return $http.put(apiUrl + eventID, eventData);
+    };
 
-	// create a user
-	eventFactory.create = function(eventData) {
-		return $http.post('/api/users/' + id + '/events', eventData)
-            .then(function(data) {
-                console.log(data);
-            });
-	};
+    e.delete = function(eventID) {
+        return $http.delete(apiUrl + eventID);
+    };
 
-	// update a user
-	eventFactory.update = function(eventID, eventData) {
-		return $http.put('/api/users/' + id + '/events/' + eventID, eventData);
-	};
+    return e;
 
-	// delete a user
-	eventFactory.delete = function(eventID) {
-		return $http.delete('/api/users/' + id + '/events/' + eventID);
-	};
 
-	// return our entire eventFactory object
-	return eventFactory;
+}])
 
-}]);
+;
