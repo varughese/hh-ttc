@@ -19,6 +19,8 @@ You should see a login screen. Ask me or Jason for a login.
 
 # TODO
 - [x] AutoComplete
+- [ ] Padding on body in login screen
+- [ ] Create Account page
 - [ ] Lowercase username on login
 - [ ] New Upcoming Event page for Fromal
 - [ ] List of users for Points Chair
