@@ -7,6 +7,11 @@ angular.module('nhs')
                 $state.go("dashboard");
             });
     };
+
+    $scope.setUEvent = function setUpcomingEvent(uevent) {
+        $scope.eventData.date = uevent.date;
+    };
+
 }])
 
 .controller('eventEdit', ['$scope', "$state", "$rootScope", '$stateParams', 'Event', function($scope, $state, $rootScope, $stateParams, Event){
@@ -26,6 +31,11 @@ angular.module('nhs')
 
 
     };
+
+    $scope.setUEvent = function setUpcomingEvent(uevent) {
+        $scope.eventData.date = uevent.date;
+    };
+
 }])
 
 ;

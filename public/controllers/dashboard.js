@@ -1,6 +1,6 @@
 angular.module('nhs')
 
-.controller('dashboard', ['$scope', "$state", "$rootScope", "Event", "UpcomingEvent", function($scope, $state, $rootScope, Event, UpcomingEvent){
+.controller('dashboard', ['$scope', "$state", "$rootScope", "Event", "UpcomingEvent", "$timeout", function($scope, $state, $rootScope, Event, UpcomingEvent, $timeout){
     $scope.events = [];
 
     Event.all()
@@ -10,8 +10,7 @@ angular.module('nhs')
 
     UpcomingEvent.all()
         .then(function(upcoming) {
-            $scope.upcoming = upcoming;
-            console.log(upcoming);
+            $rootScope.upcoming = upcoming;
         });
 
     $scope.removeEvent = function(eventID, i){
