@@ -32,7 +32,7 @@ module.exports = function(apiRouter) {
     apiRouter.route('/users/:userID/events/:eventID')
         .get(function(req, res) {
             Event.findById(req.params.eventID).lean().exec(function(err, evt) {
-				evt.date = moment(evt.date).format("YYYY MM DD");
+				// evt.date = moment(evt.date).format("YYYY MM DD");
 				res.json(evt);
             });
         })
