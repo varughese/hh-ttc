@@ -1,0 +1,33 @@
+<h2>{{ member.name }}</h2>
+{{ member }}
+
+<h4>
+    Events
+</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Hours</th>
+            <th>Date</th>
+            <th>Checked?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="event in events">
+            <td>{{event.name}}</td>
+            <td>{{event.hours}}</td>
+            <td>{{event.date | date : 'M/d'}}</td>
+            <td><input type="checkbox" ng-model="event.checked"></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <td><strong>Total Hours:</strong></td>
+        <td><strong></strong>{{findTotal()}}</td>
+        <td></td>
+        <td></td>
+    </tfoot>
+</table>
+
+<button class="btn btn-primary">Save</button>

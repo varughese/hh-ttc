@@ -1,0 +1,18 @@
+<h2>
+    Member List
+</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number of Events</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="member in members" ui-sref="singleMember({memberID: member._id})">
+            <td>{{member.name}}</td>
+            <td>{{member.events.length}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -26,7 +26,8 @@
                             <li><a ui-sref="dashboard"><span class="glyphicon glyphicon-hourglass"></span>Events</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="navbar-text">Hello {{ user.username }}!</li>
+                            <li><a>Hello {{ user.username }}!</a></li>
+							<li ng-if="user.admin"><a ui-sref="memberList">Check on Members</a></li>
                             <li><a ng-click="logout()">Logout</a></li>
                         </ul>
                     </div>
@@ -56,5 +57,6 @@
         <script src="controllers/login.js"></script>
         <script src="controllers/dashboard.js"></script>
         <script src="controllers/event.js"></script>
+		<script src="controllers/member.js"></script>
     </body>
 </html>

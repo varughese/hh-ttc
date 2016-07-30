@@ -30,6 +30,16 @@ angular.module('nhs')
             templateUrl: "templates/event.html",
             controller: "eventEdit"
         })
+		.state("memberList", {
+            url: "/members/",
+            templateUrl: "templates/members.html",
+            controller: "memberList"
+        })
+		.state("singleMember", {
+			url: "/member/:memberID",
+			templateUrl: "templates/single-member.html",
+			controller: "singleMember"
+		})
         ;
 }])
 
