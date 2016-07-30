@@ -1,5 +1,6 @@
 var User = require('../models/user'),
     Event = require('../models/event').events,
+	moment = require("moment"),
     UpcomingEvent = require('../models/event').upcomingEvents;
 
 module.exports = function(apiRouter) {
@@ -7,7 +8,6 @@ module.exports = function(apiRouter) {
         .get(function(req, res) {
             req.user.populate('events', function(err, user) {
                 if (err) return res.send(err);
-
                 res.json(user.events);
             });
         })
@@ -31,8 +31,9 @@ module.exports = function(apiRouter) {
 
     apiRouter.route('/users/:userID/events/:eventID')
         .get(function(req, res) {
-            Event.findById(req.params.eventID, function(err, evt) {
-                res.json(evt);
+            Event.findById(req.params.eventID).lean().exec(function(err, evt) {
+				evt.date = moment(evt.date).format("YYYY MM DD");
+				res.json(evt);
             });
         })
         .put(function(req, res) {
