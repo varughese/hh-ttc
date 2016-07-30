@@ -8,9 +8,10 @@ angular.module('nhs')
 
 }])
 
-.controller('singleMember', ['$scope', "$stateParams", "$rootScope", "User", function($scope, $stateParams, $rootScope, User){
+.controller('singleMember', ['$scope', "$stateParams", "$rootScope", "User", "$q", "$state",
+function($scope, $stateParams, $rootScope, User, $q, $state){
     $scope.events = [];
-	
+
 	User.get($stateParams.memberID)
 		.then(function(user) {
 			$scope.member = user;
@@ -28,6 +29,20 @@ angular.module('nhs')
         }
         return total;
     };
+
+	$scope.saveChecks = function() {
+		var promises = [];
+		angular.forEach($scope.events, function(event) {
+			if(event.justChecked) {
+				promises.push(User.checkEvent($stateParams.memberID, event._id));
+			}
+		});
+
+		$q.all(promises)
+			.then(function() {
+				$state.go("memberList");
+			});
+	};
 }])
 
 ;

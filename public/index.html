@@ -28,6 +28,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a>Hello {{ user.username }}!</a></li>
 							<li ng-if="user.admin"><a ui-sref="memberList">Check on Members</a></li>
+							<li ng-if="user.admin"><a ui-sref="uevent.create">Add Upcoming Event</a></li>
                             <li><a ng-click="logout()">Logout</a></li>
                         </ul>
                     </div>

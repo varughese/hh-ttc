@@ -30,6 +30,19 @@ angular.module('nhs')
             templateUrl: "templates/event.html",
             controller: "eventEdit"
         })
+		.state("uevent", {
+            url: "/upcoming-event",
+            template: "<div ui-view></div>",
+            abstract: true
+        })
+        .state("uevent.create", {
+            url: "/create",
+            templateUrl: "templates/uevent.html",
+            controller: "upcomingEventCreate"
+        })
+        .state("uevent.edit", {
+            url: "/edit/:ueventID",
+        })
 		.state("memberList", {
             url: "/members/",
             templateUrl: "templates/members.html",

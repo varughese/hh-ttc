@@ -38,4 +38,15 @@ angular.module('nhs')
 
 }])
 
+.controller('upcomingEventCreate', ['$scope', "$state", "$rootScope", '$stateParams', 'UpcomingEvent', function($scope, $state, $rootScope, $stateParams, UpcomingEvent){
+	$scope.saveEvent = function(){
+        UpcomingEvent.create($scope.eventData)
+            .then(function() {
+                $state.go("dashboard");
+            });
+    };
+
+
+}])
+
 ;

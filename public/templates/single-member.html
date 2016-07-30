@@ -18,7 +18,10 @@
             <td>{{event.name}}</td>
             <td>{{event.hours}}</td>
             <td>{{event.date | date : 'M/d'}}</td>
-            <td><input type="checkbox" ng-model="event.checked"></td>
+            <td>
+				<input ng-if="!event.checked" type="checkbox" ng-model="event.justChecked">
+				<span ng-if="event.checked">Checked</span>
+			</td>
         </tr>
     </tbody>
     <tfoot>
@@ -29,4 +32,4 @@
     </tfoot>
 </table>
 
-<button class="btn btn-primary">Save</button>
+<button class="btn btn-primary" ng-click="saveChecks()">Save</button>
