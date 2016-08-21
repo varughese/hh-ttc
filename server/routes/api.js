@@ -11,7 +11,8 @@ module.exports = function(app, express) {
     apiRouter.route('/users')
         .post(function(req, res) {
             var user = new User();
-            user.name = req.body.name;
+            user.firstname = req.body.firstname;
+            user.lastname = req.body.lastname;
             user.username = req.body.username;
             user.password = req.body.password;
             if(req.body.admin) user.admin = true;
@@ -35,14 +36,14 @@ module.exports = function(app, express) {
             if(!user) {
                 res.json({
                     success: false,
-                    message: 'Auth failed. User not found'
+                    message: 'Incorrect username'
                 });
             } else {
                 var validPass = user.comparePassword(req.body.password);
                 if(!validPass) {
                     res.json({
                         success: false,
-                        message: 'Auth failed. Incorrect password'
+                        message: 'Incorrect password'
                     });
                 } else {
                     var token = jwt.sign({
