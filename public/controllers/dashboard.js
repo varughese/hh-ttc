@@ -3,10 +3,16 @@ angular.module('nhs')
 .controller('dashboard', ['$scope', "$state", "$rootScope", "Event", "UpcomingEvent", "$timeout", function($scope, $state, $rootScope, Event, UpcomingEvent, $timeout){
     $scope.events = [];
 
-    Event.all()
-        .then(function(events) {
-            $scope.events = events;
-        });
+    var watcher = $rootScope.$watch("user", function(n, o, s) {
+        if(n && n.id) {
+            Event.all()
+                .then(function(events) {
+                    $scope.events = events;
+                });
+            watcher();
+        }
+    });
+
 
     UpcomingEvent.all()
         .then(function(upcoming) {
