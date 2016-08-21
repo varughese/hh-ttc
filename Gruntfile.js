@@ -3,12 +3,12 @@ module.exports = function(grunt) {
     grunt.initConfig({
         uglify: {
             'public/all.js': [
-                // "public/lib/js/jquery.js",
-                // "public/lib/js/bootstrap.js",
-                // "public/lib/js/angular.js",
-                // "public/lib/js/angular-ui-router.js",
-                // "public/lib/js/ui-bootstrap-custom-2.0.0.js",
-                // "public/lib/js/ui-bootstrap-custom-tpls-2.0.0.js",
+                "public/lib/js/jquery.js",
+                "public/lib/js/bootstrap.js",
+                "public/lib/js/angular.js",
+                "public/lib/js/angular-ui-router.js",
+                "public/lib/js/ui-bootstrap-custom-2.0.0.js",
+                "public/lib/js/ui-bootstrap-custom-tpls-2.0.0.js",
                 "public/app.js",
                 "public/app.routes.js",
                 "public/services/auth.js",
