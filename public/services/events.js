@@ -4,6 +4,14 @@ angular.module('nhs')
     var userID = $rootScope.user.id,
         apiUrl = '/api/users/' + userID + '/events/';
 
+    var watcher = $rootScope.$watch("user", function(n, o, s) {
+        if(n && n.id) {
+            userID = $rootScope.user.id;
+            apiUrl = '/api/users/' + userID + '/events/';
+            watcher();
+        }
+    });
+
     var e = {};
 
     e.all = function() {
