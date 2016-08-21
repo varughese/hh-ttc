@@ -26,6 +26,7 @@ angular.module('nhs')
         $rootScope.user = {};
         $rootScope.user.loggedIn = false;
         $state.go("login");
+        location.reload(true);
     };
 
 }]);
