@@ -1,9 +1,5 @@
 angular.module('nhs')
 
-.run(function ($state,$rootScope) {
-    $rootScope.state = $state;
-})
-
 .controller('main', ['$scope', '$rootScope', '$state', 'Auth', function($scope, $rootScope, $state, Auth){
     $rootScope.user = $rootScope.user || {};
 
