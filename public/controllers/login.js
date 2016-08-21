@@ -8,7 +8,7 @@ angular.module('nhs')
     $scope.login = function(){
         $scope.processing = true;
 
-        Auth.login($scope.user.username, $scope.user.password)
+        Auth.login($scope.user.username.toLowerCase(), $scope.user.password)
             .then(function(user) {
                 $rootScope.user = user;
                 $state.go('dashboard');
