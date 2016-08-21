@@ -13,7 +13,7 @@ module.exports = function(app, express) {
             var user = new User();
             user.firstname = req.body.firstname;
             user.lastname = req.body.lastname;
-            user.username = req.body.username;
+            user.username = req.body.username.toLowerCase();
             user.password = req.body.password;
             if(req.body.admin) user.admin = true;
 
@@ -30,7 +30,7 @@ module.exports = function(app, express) {
 
     apiRouter.post('/token', function(req, res) {
         User.findOne({username: req.body.username})
-        .select('name username password admin').exec(function(err, user) {
+        .select('lastname firstname username password admin').exec(function(err, user) {
             if(err) throw err;
 
             if(!user) {
@@ -47,6 +47,8 @@ module.exports = function(app, express) {
                     });
                 } else {
                     var token = jwt.sign({
+                        firstname: user.firstname,
+                        lastname: user.lastname,
                         name: user.name,
                         username: user.username,
                         admin: user.admin,

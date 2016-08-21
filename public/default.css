@@ -6,3 +6,23 @@
     margin: 0 auto;
     max-height: 120px;
 }
+
+body {
+    padding-bottom: 6px;
+}
+
+.navbar-header .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-header .navbar-brand svg {
+    fill: #ddd;
+}
+
+.navbar-header .navbar-brand span.title {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: bold;
+    color: #ddd;
+}
