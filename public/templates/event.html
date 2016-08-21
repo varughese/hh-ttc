@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     <label>Hours</label>
-    <input ng-model="eventData.hours" type="number" class="form-control" placeholder="Hours">
+    <input ng-model="eventData.hours" type="number" step="0.5" class="form-control" placeholder="Hours">
   </div>
 
   <button type="submit" ng-if="getState() === 'event.edit'" class="btn btn-primary btn-block">Update</button>

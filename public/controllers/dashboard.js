@@ -7,7 +7,7 @@ angular.module('nhs')
         if(n && n.id) {
             Event.all()
                 .then(function(events) {
-                    $scope.events = events;
+                    $scope.events = events.reverse();
                 });
             watcher();
         }

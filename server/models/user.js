@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs');
 
 var UserSchema = new Schema({
-    name: String,
+    firstname: String,
+    lastname: String,
     username: { type: String, required: true, index: { unique: true}},
     password: { type: String, required: true, select: false},
     events: [ { type: Schema.Types.ObjectId, ref: 'Events'}],

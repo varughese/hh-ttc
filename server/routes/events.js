@@ -57,7 +57,11 @@ module.exports = function(apiRouter) {
                 _id: req.params.eventID
             }, function(err, user) {
                 if(err) return res.send(err);
-                res.json({message: 'succesfully deleted'});
+                req.user.events.splice(req.user.events.indexOf(req.params.eventID), 1);
+                req.user.save(function(err, user) {
+                    if(err) return res.send(err);
+                    res.json({message: 'succesfully deleted'});
+                });
             });
         });
 
