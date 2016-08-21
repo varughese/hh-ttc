@@ -11,6 +11,10 @@ body {
     padding-bottom: 6px;
 }
 
+.navbar {
+    border-radius: 0;
+}
+
 .navbar-header .navbar-brand {
     display: flex;
     align-items: center;
@@ -19,10 +23,21 @@ body {
 .navbar-header .navbar-brand svg {
     fill: #ddd;
 }
+.navbar-header .navbar-brand .glyphicon {
+    top: -1px
+}
 
 .navbar-header .navbar-brand span.title {
-    margin-top: 5px;
+    margin-top: 2px;
     margin-left: 5px;
     font-weight: bold;
+    color: #ddd;
+}
+
+.event-table tbody tr {
+    cursor: pointer;
+}
+.event-table tbody tr:hover, .event-table tbody tr:active {
+    background: #333;
     color: #ddd;
 }
