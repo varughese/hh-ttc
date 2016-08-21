@@ -10,6 +10,7 @@ module.exports = function(grunt) {
                 "public/lib/js/ui-bootstrap-custom-2.0.0.js",
                 "public/lib/js/ui-bootstrap-custom-tpls-2.0.0.js",
                 "public/app.js",
+                "public/templates.js",
                 "public/app.routes.js",
                 "public/services/auth.js",
                 "public/services/events.js",
@@ -31,12 +32,32 @@ module.exports = function(grunt) {
                     ext: '.min.css'
                 }]
             }
+        },
+        ngtemplates: {
+            nhs: {
+                cwd: "public",
+                src: "templates/**/*.html",
+                dest: "public/templates.js",
+                options: {
+                    htmlmin: {
+                      collapseBooleanAttributes:      true,
+                      collapseWhitespace:             true,
+                      removeAttributeQuotes:          true,
+                      removeComments:                 true, // Only if you don't use comment directives!
+                      removeEmptyAttributes:          true,
+                      removeRedundantAttributes:      true,
+                      removeScriptTypeAttributes:     true,
+                      removeStyleLinkTypeAttributes:  true
+                    }
+                },
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-angular-templates');
 
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['ngtemplates', 'uglify']);
 
 };
