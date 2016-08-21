@@ -8,6 +8,25 @@ module.exports = function(app, express) {
     var apiRouter = express.Router();
 
 
+    apiRouter.route('/users')
+        .post(function(req, res) {
+            var user = new User();
+            user.name = req.body.name;
+            user.username = req.body.username;
+            user.password = req.body.password;
+            if(req.body.admin) user.admin = true;
+
+            user.save(function(err) {
+                if(err) {
+                    if(err.code == 11000)
+                        return res.json({success: false, message: 'username already exists'});
+                    else
+                        return res.send(err);
+                }
+                res.json({message: 'User Created!'});
+            });
+        });
+
     apiRouter.post('/token', function(req, res) {
         User.findOne({username: req.body.username})
         .select('name username password admin').exec(function(err, user) {
@@ -73,23 +92,6 @@ module.exports = function(app, express) {
     });
 
     apiRouter.route('/users')
-        .post(function(req, res) {
-            var user = new User();
-            user.name = req.body.name;
-            user.username = req.body.username;
-            user.password = req.body.password;
-            if(req.body.admin) user.admin = true;
-
-            user.save(function(err) {
-                if(err) {
-                    if(err.code == 11000)
-                        return res.json({success: false, message: 'username already exists'});
-                    else
-                        return res.send(err);
-                }
-                res.json({message: 'User Created!'});
-            });
-        })
         .get(function(req, res) {
             User.find(function(err, users) {
                 if(err) res.send(err);
