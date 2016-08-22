@@ -28,7 +28,13 @@ angular.module('nhs')
             .then(function() {
                 $state.go("dashboard");
             });
+    };
 
+    $scope.deleteEvent = function(){
+        Event.delete(eventID)
+            .then(function() {
+                $state.go("dashboard");
+            });
 
     };
 
