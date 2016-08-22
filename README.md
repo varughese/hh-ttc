@@ -18,15 +18,27 @@ You should see a login screen. Ask me or Jason for a login.
 
 
 # TODO
-- [x] AutoComplete
-- [ ] Padding on body in login screen
-- [ ] Reverse order of events on dashboard?
-- [ ] Create Account page
-- [ ] Lowercase username on login
-- [ ] New Upcoming Event page for Fromal
-- [ ] List of users for Points Chair
-- [ ] Ability for Points Chair to "Check" off events
 
+## Style Changes
+- [ ] Navbar cannot use flex because it is not supported on mobile
+- [ ] Upcoming events should have date on different line, and description should be above it
+- [ ] Delete button is haphazardly placed
+- [ ] the UI may be weird for the events
+
+## Functionality
+- [ ] Date Picker on Upcoming Events
+- [ ] Calendar should pop up instead of being inline like that
+- [ ] Decide what to do if there are a lot of events to scroll through
+- [ ] Create Account page
+
+## Completed
+- [x] Lowercase username on login
+- [x] New Upcoming Event page for Fromal
+- [x] List of users for Points Chair
+- [x] Ability for Points Chair to "Check" off events
+- [x] Padding on body in login screen
+- [x] Reverse order of events on dashboard?
+- [x] AutoComplete
 
 ## Screenshots
 ![](http://i.imgur.com/hGvnuy3.png?2)
