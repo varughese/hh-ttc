@@ -3,7 +3,7 @@ angular.module('nhs')
 .controller('login', ['$scope', "$state", "$rootScope", "Auth", function($scope, $state, $rootScope, Auth){
     $scope.processing = false;
 
-    if($rootScope.user.loggedIn) $state.go("dashboard");
+    if(Auth.loggedIn()) $state.go("dashboard");
 
     $scope.login = function(){
         $scope.processing = true;
