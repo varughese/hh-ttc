@@ -10,6 +10,11 @@ angular.module('nhs')
             templateUrl: "templates/login.html",
             controller: "login"
         })
+		.state("signup", {
+            url: "/signup",
+            templateUrl: "templates/signup.html",
+            controller: "signup"
+        })
         .state("dashboard", {
             url: "/dashboard",
             templateUrl: "templates/dashboard.html",

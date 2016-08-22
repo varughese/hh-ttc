@@ -9,6 +9,7 @@ angular.module('nhs')
 
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
+		if(toState.name === "signup") return;
 
         Auth.getUser()
             .then(function(data) {

@@ -7,6 +7,10 @@
     max-height: 120px;
 }
 
+.login.signup img {
+	width: 69px;
+}
+
 body {
     padding-bottom: 6px;
 }
