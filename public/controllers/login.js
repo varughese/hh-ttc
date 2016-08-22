@@ -22,12 +22,11 @@ angular.module('nhs')
 .controller('signup', ['$scope', "$state", "$rootScope", "User", function($scope, $state, $rootScope, User){
 
     $scope.signup = function(){
-		console.log($scope.signup);
+		console.log($scope.user);
 
-        User.create($scope.user.username.toLowerCase(), $scope.user.password)
-            .then(function(user) {
-                $rootScope.user = user;
-                $state.go('dashboard');
+        User.create($scope.user)
+            .then(function() {
+                $state.go('login');
             })
             .catch(function(err) {
                 $scope.error = err;

@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="member in members" ui-sref="singleMember({memberID: member._id})">
-            <td>{{member.name}}</td>
+            <td>{{member.firstname + " " + member.lastname}}</td>
             <td>{{member.events.length}}</td>
         </tr>
     </tbody>

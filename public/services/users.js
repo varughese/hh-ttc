@@ -12,8 +12,8 @@ angular.module('nhs')
             });
     };
 
-    user.create = function(eventData) {
-        return $http.post(apiUrl, eventData);
+    user.create = function(userData) {
+        return $http.post(apiUrl, userData);
     };
 
     user.get = function(userID) {
