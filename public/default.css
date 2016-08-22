@@ -41,3 +41,11 @@ body {
     background: #333;
     color: #ddd;
 }
+
+.uevent-table .time-info {
+    font-size: 12px;
+}
+
+.uevent-table .description {
+    font-style: italic;
+}

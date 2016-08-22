@@ -30,21 +30,33 @@
 
 <h2>
     Upcoming Events
+    <a ng-if="user.admin" ui-sref="uevent.create" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span>
+        Add
+    </a>
 </h2>
 
-<table class="table">
+<table class="table uevent-table">
     <thead>
         <tr>
             <th>Event</th>
-            <th>Hours</th>
-            <th>Date</th>
+            <th>Location</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="event in upcoming">
-            <td>{{event.name}}</td>
-            <td>{{event.hours}}</td>
-            <td>{{event.date | date : 'M/d'}}</td>
+            <td>
+                <div>
+                    <b>{{event.name}}</b>
+                    <div class="time-info">
+                        <span><b>Start</b> {{event.timeStart}}</span>
+                        <span><b>End</b> {{event.timeEnd}}</span>
+                        <span><b>Date</b> {{event.date | date : 'M/d'}}</span>
+                    </div>
+                    <div class="description">{{event.description}}</div>
+                </div>
+            </td>
+            <td>{{event.location}}</td>
         </tr>
     </tbody>
 </table>
