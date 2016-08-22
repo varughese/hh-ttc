@@ -6,13 +6,15 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Number of Events</th>
+            <th>Checked</th>
+			<th>Total Hours</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="member in members" ui-sref="singleMember({memberID: member._id})">
             <td>{{member.firstname + " " + member.lastname}}</td>
-            <td>{{member.events.length}}</td>
+            <td>{{member.checked}}</td>
+			<td>{{member.totalHours}}</td>
         </tr>
     </tbody>
 </table>

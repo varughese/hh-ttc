@@ -1,8 +1,23 @@
+function totalHours(events) {
+	var total = 0;
+	for(var i = 0; i < events.length; i++){
+		total += events[i].hours;
+	}
+	return total;
+}
+
 angular.module('nhs')
 
 .controller('memberList', ['$scope', "$state", "$rootScope", "User", function($scope, $state, $rootScope, User){
     User.all()
 		.then(function(userList) {
+			for(var i=0; i<userList.length; i++) {
+				var m = userList[i], evts = m.events;
+				m.totalHours = totalHours(evts);
+				m.checked = !evts.filter(function(evt) {
+					return !evt.checked;
+				}).length;
+			}
 			$scope.members = userList;
 		});
 
