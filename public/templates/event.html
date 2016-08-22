@@ -25,5 +25,6 @@
 
   <button type="submit" ng-if="getState() === 'event.edit'" class="btn btn-primary btn-block">Update</button>
   <button type="submit" ng-if="getState() === 'event.create'" class="btn btn-primary btn-block">Create</button>
+   <button type="button" ng-if="getState() === 'event.edit'" class="btn btn-danger btn-block" ng-click="deleteEvent()">Delete</button>
 
 </form>
