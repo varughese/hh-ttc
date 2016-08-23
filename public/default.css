@@ -7,12 +7,17 @@
     max-height: 120px;
 }
 
+.login.signup img {
+	width: 69px;
+}
+
 body {
     padding-bottom: 6px;
 }
 
 .navbar {
     border-radius: 0;
+	margin-bottom: 0;
 }
 
 .navbar-header .navbar-brand {
@@ -49,4 +54,8 @@ body {
 
 .uevent-table .description {
     font-style: italic;
+}
+
+.nhs-date-picker table {
+	margin: 0px auto 10px auto;
 }

@@ -96,7 +96,7 @@ module.exports = function(app, express) {
 
     apiRouter.route('/users')
         .get(function(req, res) {
-            User.find(function(err, users) {
+            User.find({}).populate('events').lean().exec(function(err, users) {
                 if(err) res.send(err);
 
                 res.json(users);

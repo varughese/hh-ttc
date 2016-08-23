@@ -48,10 +48,11 @@
             <td>
                 <div>
                     <b>{{event.name}}</b>
+					<div class="time-info">
+						<span><b>Date</b> {{event.date | date : 'EEE, MMM, d'}}</span>
+					</div>
                     <div class="time-info">
-                        <span><b>Start</b> {{event.timeStart}}</span>
-                        <span><b>End</b> {{event.timeEnd}}</span>
-                        <span><b>Date</b> {{event.date | date : 'M/d'}}</span>
+                        <span><b>Time</b> {{event.timeStart}} – {{event.timeEnd}}</span>
                     </div>
                     <div class="description">{{event.description}}</div>
                 </div>
