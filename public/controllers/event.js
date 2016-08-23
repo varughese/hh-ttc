@@ -1,7 +1,11 @@
 angular.module('nhs')
 
 .controller('eventCreate', ['$scope', "$state", "$rootScope", "Event", function($scope, $state, $rootScope, Event){
-    $scope.saveEvent = function(){
+	$scope.eventData = {} || $scope.eventData;
+
+	$scope.eventData.date = Date.now();
+
+	$scope.saveEvent = function(){
         Event.create($scope.eventData)
             .then(function() {
                 $state.go("dashboard");

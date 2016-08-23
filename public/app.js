@@ -8,4 +8,8 @@ angular.module('nhs', [
     $httpProvider.interceptors.push('AuthInterceptor');
 }])
 
+.run(["uibDatepickerConfig", function(uibDatepickerConfig) {
+	uibDatepickerConfig.showWeeks =false;
+}])
+
 ;

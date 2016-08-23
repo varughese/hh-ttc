@@ -1,5 +1,7 @@
 <h2 ng-if="getState() === 'event.create'">Create Event</h2>
-<h2 ng-if="getState() === 'event.edit'">Edit Event</h2>
+<h2 ng-if="getState() === 'event.edit'">Edit Event <button type="button" ng-if="getState() === 'event.edit'" class="btn btn-default" ng-click="deleteEvent()">
+<span class="glyphicon glyphicon-trash"></span> Delete
+</button></h2>
 
 <form ng-submit="saveEvent()">
   <div class="form-group">
@@ -8,7 +10,7 @@
            typeahead-on-select='setUEvent($item)'
            type="text" class="form-control" placeholder="Name">
   </div>
-   <div uib-datepicker ng-model="eventData.date"></div>
+   <div uib-datepicker ng-model="eventData.date" class="nhs-date-picker"></div>
    <div class="form-group">
      <label>Date</label>
      <span class="input-group">
@@ -31,6 +33,5 @@
 
   <button type="submit" ng-if="getState() === 'event.edit'" class="btn btn-primary btn-block">Update</button>
   <button type="submit" ng-if="getState() === 'event.create'" class="btn btn-primary btn-block">Create</button>
-   <button type="button" ng-if="getState() === 'event.edit'" class="btn btn-danger btn-block" ng-click="deleteEvent()">Delete</button>
 
 </form>
