@@ -11,6 +11,10 @@
 	width: 69px;
 }
 
+.login .btn-link {
+    margin-top: 5px;
+}
+
 body {
     padding-bottom: 6px;
 }
@@ -68,4 +72,15 @@ body {
 
 div.has-button-bar {
     padding-bottom: 54px;
+}
+
+.ng-invalid.ng-touched {
+    border-color: #d25656;
+    background: #ffcfcf;
+}
+
+.invalid-message {
+    margin-top: -14px;
+margin-bottom: 10px;
+color: #d25656;
 }

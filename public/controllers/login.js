@@ -25,8 +25,12 @@ angular.module('nhs')
 		console.log($scope.user);
 
         User.create($scope.user)
-            .then(function() {
-                $state.go('login');
+            .then(function(data) {
+                if(data.success) {
+                    $state.go('login');
+                } else {
+                    $scope.signupForm.username.usernameTaken = true;
+                }
             })
             .catch(function(err) {
                 $scope.error = err;
@@ -34,4 +38,21 @@ angular.module('nhs')
     };
 }])
 
+.directive("compareTo", ["$parse", function($parse) {
+    return {
+        require: "ngModel",
+        link: function(scope, el, attrs, ngModel) {
+            var me = attrs.ngModel;
+            var matchTo = attrs.compareTo;
+
+            scope.$watch(me, function(value){
+                if(value) {
+                    ngModel.$setValidity('match', value === $parse(matchTo)(scope) );
+                } else {
+                    ngModel.$setValidity('match', true);
+                }
+            });
+        }
+    };
+}])
 ;
