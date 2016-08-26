@@ -24,7 +24,7 @@ module.exports = function(app, express) {
                     else
                         return res.send(err);
                 }
-                res.json({message: 'User Created!'});
+                res.json({message: 'User Created!', success: true});
             });
         });
 
