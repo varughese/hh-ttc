@@ -25,8 +25,8 @@ angular.module('nhs')
 		console.log($scope.user);
 
         User.create($scope.user)
-            .then(function(data) {
-                if(data.success) {
+            .then(function(resp) {
+                if(resp.data.success) {
                     $state.go('login');
                 } else {
                     $scope.signupForm.username.usernameTaken = true;
