@@ -73,7 +73,7 @@ module.exports = function(apiRouter) {
             };
         }
 
-        UpcomingEvent.find(filter)
+        UpcomingEvent.find(filter).sort("date")
         .exec(function(err, uevents) {
             if(err) res.send(err);
 
