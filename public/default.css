@@ -40,10 +40,10 @@ body {
     color: #ddd;
 }
 
-.event-table tbody tr {
+.clickable-table tbody tr {
     cursor: pointer;
 }
-.event-table tbody tr:hover, .event-table tbody tr:active {
+.clickable-table tbody tr:hover, .clickable-table tbody tr:active {
     background: #333;
     color: #ddd;
 }
@@ -58,4 +58,14 @@ body {
 
 .nhs-date-picker table {
 	margin: 0px auto 10px auto;
+}
+
+.button-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 10px;
+}
+
+div.has-button-bar {
+    padding-bottom: 54px;
 }
