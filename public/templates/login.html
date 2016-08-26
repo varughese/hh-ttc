@@ -1,15 +1,15 @@
 <div class="row col-md-6 col-md-offset-3 login">
     <div class="col-sm-12">
-        <img class="img-responsive" src="../images/nhslogo.svg" />
+        <img class="img-responsive" src="../images/nhs-logo.jpeg" />
     </div>
 
     <div class="login-main">
         <h1>Login</h1>
-		<form ng-submit="login()">
+		<form novalidate ng-submit="login()">
 
 			<div class="form-group">
 				<label>Username</label>
-				<input type="text" required class="form-control" ng-model="user.username">
+				<input type="text" class="form-control" required ng-model="user.username">
 			</div>
 
 			<div class="form-group">
