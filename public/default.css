@@ -29,6 +29,13 @@ body {
     align-items: center;*/
 }
 
+
+.navbar .navbar-right li:last-child {
+    /*display: flex;
+    align-items: center;*/
+    cursor: pointer;
+}
+
 .navbar-header .navbar-brand svg {
     fill: #ddd;
 }
