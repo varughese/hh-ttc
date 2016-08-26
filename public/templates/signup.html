@@ -5,7 +5,7 @@
 
     <div class="login-main">
         <h1>Create Account</h1>
-		<form ng-submit="signup()">
+		<form ng-submit="signup()" name="signupForm">
 			<div class="form-group">
 				<label>First Name</label>
 				<input type="text" required class="form-control" ng-model="user.firstname">
@@ -18,19 +18,24 @@
 
 			<div class="form-group">
 				<label>Username</label>
-				<input type="text" required class="form-control" ng-model="user.username">
+				<input type="text" required class="form-control" name="username" ng-model="user.username">
 			</div>
-
+            <div class="invalid-message" ng-show="signupForm.username.usernameTaken">
+                Username taken
+            </div>
 			<div class="form-group">
 				<label>Password</label>
 				<input type="password" required class="form-control" ng-model="user.password">
 			</div>
-
+            <div class="invalid-message" ng-show="signupForm.confirmpassword.$invalid && !signupForm.confirmpassword.$pristine">
+                Passwords don't match
+            </div>
 			<div class="form-group">
 				<label>Confirm Password</label>
-				<input type="password" required class="form-control" ng-model="user.confirmpassword">
+				<input type="password" required class="form-control" ng-model-options="{debounce: 300}" compare-to="user.password" name="confirmpassword" ng-model="user.confirmpassword">
 			</div>
-			<button class="btn btn-block btn-primary" type="submit">Signup</button>
+
+			<button class="btn btn-block btn-primary" type="submit" ng-disabled="signupForm.$invalid">Signup</button>
 		</form>
 	</div>
 

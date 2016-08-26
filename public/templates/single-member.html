@@ -1,3 +1,5 @@
+<div class="has-button-bar">
+
 <h2>{{ member.name }}</h2>
 
 <h4>
@@ -20,7 +22,7 @@
             <td>{{event.date | date : 'M/d'}}</td>
             <td>
 				<input ng-if="!event.checked" type="checkbox" ng-model="event.justChecked">
-				<span ng-if="event.checked">Checked</span>
+			    <span ng-if="event.checked" class="glyphicon glyphicon-ok"></span>
 			</td>
         </tr>
     </tbody>
@@ -32,4 +34,9 @@
     </tfoot>
 </table>
 
-<button class="btn btn-primary" ng-click="saveChecks()">Save</button>
+</div>
+
+<div class="button-bar">
+    <button class="btn btn-default" ui-sref="memberList"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+    <button class="btn btn-primary pull-right" ng-click="saveChecks()">Save</button>
+</div>
