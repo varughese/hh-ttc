@@ -95,3 +95,13 @@ div.has-button-bar {
 margin-bottom: 10px;
 color: #d25656;
 }
+
+@media screen and (max-width: 420px) {
+    .uevent-table .description {
+        max-height: 75px;
+        overflow-y: auto;
+        font-size: smaller;
+        margin-right: -90px;
+        margin-top: 4px;
+    }
+}

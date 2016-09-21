@@ -58,7 +58,7 @@
                     <div class="time-info">
                         <span><b>Time</b> {{event.timeStart}} – {{event.timeEnd}}</span>
                     </div>
-                    <div class="description">{{event.description}}</div>
+                    <div class="description" ng-bind-html="event.htmlDescription"></div>
                 </div>
             </td>
             <td>{{event.location}}</td>
