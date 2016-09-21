@@ -18,7 +18,9 @@ angular.module('nhs')
 					return !evt.checked;
 				}).length;
 			}
-			$scope.members = userList;
+			$scope.members = userList.sort(function(u1, u2) {
+				return (u1.lastname.toLowerCase() > u2.lastname.toLowerCase()) ? 1 : -1;
+			});
 		});
 
 }])
