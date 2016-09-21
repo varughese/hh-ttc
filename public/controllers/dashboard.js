@@ -30,7 +30,7 @@ angular.module('nhs')
                         if(space < 0) {
                             space = desc.length;
                         }
-                        
+
                         var html = "<a target=\"_blank\" href=\"" + desc.substring(http, space) + "\">Link</a>";
                         desc = desc.substring(0, http) + html + desc.substring(space);
                     }
