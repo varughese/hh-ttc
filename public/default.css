@@ -67,6 +67,10 @@ body {
     font-style: italic;
 }
 
+.uevent-table .edit span {
+    margin-right: 3px;
+}
+
 .nhs-date-picker table {
 	margin: 0px auto 10px auto;
 }

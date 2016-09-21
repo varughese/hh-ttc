@@ -47,6 +47,8 @@ angular.module('nhs')
         })
         .state("uevent.edit", {
             url: "/edit/:ueventID",
+            templateUrl: "templates/uevent.html",
+            controller: "upcomingEventEdit"
         })
 		.state("memberList", {
             url: "/members/",
