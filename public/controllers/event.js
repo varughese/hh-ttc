@@ -59,4 +59,31 @@ angular.module('nhs')
 
 }])
 
+.controller('upcomingEventEdit', ['$scope', "$state", "$rootScope", '$stateParams', 'UpcomingEvent', function($scope, $state, $rootScope, $stateParams, UpcomingEvent){
+	var ueventID = $stateParams.ueventID;
+
+	// UpcomingEvent.get(ueventID)
+	// 	.then(function(event) {
+	// 		$scope.eventData = event;
+	// 	});
+
+	if(!$rootScope.upcoming) $state.go("dashboard");
+
+	for(var i=0; i<$rootScope.upcoming.length; i++) {
+		var currentUpcomingEvent = $rootScope.upcoming[i];
+		if(currentUpcomingEvent._id === ueventID) {
+			$scope.eventData = currentUpcomingEvent;
+		}
+	}
+
+	$scope.saveEvent = function(){
+        UpcomingEvent.update(ueventID, $scope.eventData)
+            .then(function() {
+                $state.go("dashboard");
+            });
+    };
+
+
+}])
+
 ;

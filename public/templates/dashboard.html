@@ -47,7 +47,11 @@
         <tr ng-repeat="event in upcoming | limitTo:6">
             <td>
                 <div>
-                    <b>{{event.name}}</b>
+                    <b>{{event.name}}
+                        <a class="edit" ng-if="user.admin" ui-sref="uevent.edit({ ueventID: '{{event._id}}' })">
+                            Edit
+                        </a>
+                    </b>
 					<div class="time-info">
 						<span><b>Date</b> {{event.date | date : 'EEE, MMM, d'}}</span>
 					</div>
