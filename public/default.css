@@ -24,15 +24,7 @@ body {
 	margin-bottom: 0;
 }
 
-.navbar-header .navbar-brand {
-    /*display: flex;
-    align-items: center;*/
-}
-
-
 .navbar .navbar-right li:last-child {
-    /*display: flex;
-    align-items: center;*/
     cursor: pointer;
 }
 
@@ -92,8 +84,8 @@ div.has-button-bar {
 
 .invalid-message {
     margin-top: -14px;
-margin-bottom: 10px;
-color: #d25656;
+    margin-bottom: 10px;
+    color: #d25656;
 }
 
 @media screen and (max-width: 420px) {
