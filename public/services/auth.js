@@ -37,16 +37,16 @@ function AuthFactory($http, $q, AuthToken, $cacheFactory) {
     return auth;
 }
 
-function AuthTokenFactory($window) {
+function AuthTokenFactory(storageService) {
     var tokenFactory = {};
 
     tokenFactory.getToken = function() {
-        return $window.localStorage.getItem('token');
+        return storageService.getItem('token');
     };
 
     tokenFactory.setToken = function(token) {
-        if(token) $window.localStorage.setItem('token', token);
-        else $window.localStorage.removeItem('token');
+        if(token) storageService.setItem('token', token);
+        else storageService.removeItem('token');
     };
 
     return tokenFactory;
@@ -72,9 +72,43 @@ function AuthInterceptorFactory($q, $injector, AuthToken) {
     return interceptor;
 }
 
+function StorageService($window) {
+    var storage = $window.localStorage;
+
+    try {
+        localStorage.setItem("__update", new Date().toLocaleString());
+    } catch (error) {
+        console.error("Browser in Private Browsing or does not support LocalStorage. Using mock storage");
+        storage = {
+            setItem: function(key, value) {
+                this[key] = value;
+            },
+            getItem: function(key) {
+                return this[key];
+            },
+            removeItem: function(key) {
+                delete this[key];
+            }
+        };
+    }
+
+    this.setItem = function(key, value) {
+        storage.setItem(key, value);
+    };
+
+    this.getItem = function(key) {
+        return storage.getItem(key);
+    };
+
+    this.removeItem = function(key) {
+        storage.removeItem(key);
+    };
+}
+
 angular.module('nhs.auth', [])
 
     .factory('Auth', ['$http', '$q', 'AuthToken', '$cacheFactory', AuthFactory])
-    .factory('AuthToken', ['$window', AuthTokenFactory])
+    .factory('AuthToken', ['storageService', AuthTokenFactory])
     .factory('AuthInterceptor', ['$q', '$injector', 'AuthToken', AuthInterceptorFactory])
+    .service('storageService', ["$window", StorageService])
 ;
