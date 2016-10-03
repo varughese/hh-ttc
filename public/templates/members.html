@@ -7,15 +7,15 @@
         <tr class="member-list-header filtertable">
             <th>Name
                 <span class="glyphicon" ng-click="reverse = !reverse" ng-show="propertyName === 'lastname'" ng-class="{'glyphicon-triangle-top': reverse, 'glyphicon-triangle-bottom': !reverse}"></span>
-                <span class="glyphicon glyphicon-filter" ng-click="propertyName = 'lastname'" ng-show="propertyName !== 'lastname'"></span>
+                <span class="glyphicon glyphicon-filter" ng-click="propertyName = 'lastname'; reverse=false" ng-show="propertyName !== 'lastname'"></span>
             </th>
 			<th>Hours
                 <span class="glyphicon" ng-click="reverse = !reverse" ng-show="propertyName === 'totalHours'" ng-class="{'glyphicon-triangle-top': reverse, 'glyphicon-triangle-bottom': !reverse}"></span>
-                <span class="glyphicon glyphicon-filter" ng-click="propertyName = 'totalHours'" ng-show="propertyName !== 'totalHours'"></span>
+                <span class="glyphicon glyphicon-filter" ng-click="propertyName = 'totalHours'; reverse=true" ng-show="propertyName !== 'totalHours'"></span>
             </th>
             <th>Checked
                 <span class="glyphicon" ng-click="reverse = !reverse" ng-show="propertyName === 'checked'" ng-class="{'glyphicon-triangle-top': reverse, 'glyphicon-triangle-bottom': !reverse}"></span>
-                <span class="glyphicon glyphicon-filter" ng-click="propertyName = 'checked'" ng-show="propertyName !== 'checked'"></span>
+                <span class="glyphicon glyphicon-filter" ng-click="propertyName = 'checked'; reverse=true" ng-show="propertyName !== 'checked'"></span>
             </th>
         </tr>
     </thead>

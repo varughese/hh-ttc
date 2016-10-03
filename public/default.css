@@ -97,3 +97,17 @@ div.has-button-bar {
         margin-top: 4px;
     }
 }
+
+.filtertable {
+
+}
+
+.filtertable th .glyphicon{
+    cursor: pointer;
+}
+
+.filtertable th .glyphicon.glyphicon-triangle-up{
+    top: 3px;
+    color: #9D9D98;
+    left: 2px;
+}
