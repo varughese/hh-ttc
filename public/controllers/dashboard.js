@@ -25,7 +25,11 @@ angular.module('nhs')
 
                     if(http > -1) {
                         var hrefText = "Link",
+                            newLine = desc.indexOf("\n", http),
                             space = desc.indexOf(" ", http);
+
+                        if(newLine > 0 && newLine < space) space = newLine;
+
 
                         if(space < 0) {
                             space = desc.length;
