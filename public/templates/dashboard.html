@@ -1,4 +1,4 @@
-<h2>
+﻿<h2>
     Events
     <a ui-sref="event.create" class="btn btn-default">
         <span class="glyphicon glyphicon-plus"></span>
@@ -44,7 +44,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="event in upcoming | limitTo:6">
+        <tr ng-repeat="event in upcoming | limitTo:25">
             <td>
                 <div>
                     <b>{{event.name}}
