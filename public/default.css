@@ -96,4 +96,21 @@ div.has-button-bar {
         margin-right: -90px;
         margin-top: 4px;
     }
+    .hide-when-small {
+        display: none;
+    }
+}
+
+.filtertable {
+
+}
+
+.filtertable th .glyphicon{
+    cursor: pointer;
+}
+
+.filtertable th .glyphicon.glyphicon-triangle-top,
+.filtertable th .glyphicon.glyphicon-triangle-bottom {
+    top: 3px;
+    left: 2px;
 }

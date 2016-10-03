@@ -27,7 +27,7 @@
 	</div>
 	<div class="form-group">
 		<label>Description</label>
-		<textarea ng-model="eventData.description" class="form-control" placeholder="Description"></textarea>
+		<textarea ng-model="eventData.description" class="form-control" placeholder="Description" rows="10"></textarea>
 	</div>
 	<button type="submit" ng-show="getState() === 'uevent.create'" class="btn btn-primary btn-block">Create</button>
 	<button type="submit" ng-if="getState() === 'uevent.edit'" class="btn btn-primary btn-block">Update</button>
