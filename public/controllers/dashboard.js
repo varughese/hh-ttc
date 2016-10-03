@@ -16,6 +16,7 @@ angular.module('nhs')
 
     UpcomingEvent.all()
         .then(function(upcoming) {
+            var today = new Date().setDate(new Date().getDate() - 1);
             for(var i=0; i<upcoming.length; i++) {
                 var u = upcoming[i],
                     desc = u.description;
@@ -41,6 +42,8 @@ angular.module('nhs')
 
                 }
                 u.htmlDescription = $sce.trustAsHtml(desc);
+
+                u.eventOver = new Date(u.date) <= today;
             }
             $rootScope.upcoming = upcoming;
         });
