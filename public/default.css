@@ -60,6 +60,7 @@ body {
 
 .uevent-table .description {
     font-style: italic;
+    margin-right: -74px;
 }
 
 .uevent-table .edit span {
@@ -93,10 +94,10 @@ div.has-button-bar {
 
 @media screen and (max-width: 420px) {
     .uevent-table .description {
-        max-height: 75px;
+        max-height: 80px;
         overflow-y: auto;
         font-size: smaller;
-        margin-right: -90px;
+        margin-right: -80px;
         margin-top: 4px;
     }
     .hide-when-small {
