@@ -63,6 +63,16 @@ body {
     margin-right: -74px;
 }
 
+.uevent-table .description a {
+    font-size: 15px;
+    background: #18619c;
+    color: #bcdcff;
+    font-weight: bold;
+    padding: 0 10px;
+    font-style: normal;
+}
+
+
 .uevent-table .edit span {
     margin-right: 3px;
 }
