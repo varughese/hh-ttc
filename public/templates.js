@@ -44,7 +44,7 @@ angular.module('nhs').run(['$templateCache', function($templateCache) {
     "\n" +
     "							c-0.126-0.002-0.26-0.016-0.376-0.059c-1.329-0.496-2.554-1.152-3.425-2.32C2.823,9.391,2.592,9.055,2.61,8.523z\"/><path fill-rule=evenodd clip-rule=evenodd fill=#FFFFFF d=\"M11.33,3.103c0.324,0.305,0.631,0.59,0.971,0.909\r" +
     "\n" +
-    "							c-1.77,1.204-3.256,2.613-4.365,4.395C8.566,6.333,9.785,4.642,11.33,3.103z\"/></g></svg></span><span class=title>NHS</span></a></div><div class=\"collapse navbar-collapse\" id=navbar-collapse-target><ul class=\"nav navbar-nav\"><li><a ui-sref=dashboard><span class=\"glyphicon glyphicon-hourglass\"></span>Events</a></li><li ng-if=user.admin><a ui-sref=memberList>Check on Members</a></li><li ng-if=user.admin><a ui-sref=uevent.create>Add Upcoming Event</a></li></ul><ul class=\"nav navbar-nav navbar-right\"><li><a>Hello {{ user.firstname }}</a></li><li><a ng-click=logout()>Logout</a></li></ul></div></div></div>"
+    "							c-1.77,1.204-3.256,2.613-4.365,4.395C8.566,6.333,9.785,4.642,11.33,3.103z\"/></g></svg></span><span class=title>TTC</span></a></div><div class=\"collapse navbar-collapse\" id=navbar-collapse-target><ul class=\"nav navbar-nav\"><li><a ui-sref=dashboard><span class=\"glyphicon glyphicon-hourglass\"></span>Events</a></li><li ng-if=user.admin><a ui-sref=memberList>Check on Members</a></li><li ng-if=user.admin><a ui-sref=uevent.create>Add Upcoming Event</a></li></ul><ul class=\"nav navbar-nav navbar-right\"><li><a>Hello {{ user.firstname }}</a></li><li><a ng-click=logout()>Logout</a></li></ul></div></div></div>"
   );
 
 

@@ -32,18 +32,33 @@ body {
 }
 
 .navbar-header .navbar-brand svg {
-    fill: #ddd;
+    fill: white;
 }
 .navbar-header .navbar-brand .glyphicon {
     top: -3px
 }
-
+.navbar-inverse {
+    background-color: #e4748e;
+    border-color: #f36a89;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #b30545;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #e4748e;
+}
 .navbar-header .navbar-brand span.title {
     position: relative;
     top: -8px;
     margin-top: 2px;
     font-weight: bold;
-    color: #ddd;
+    color: white;
 }
 
 .clickable-table tbody tr {
@@ -86,7 +101,11 @@ body {
     bottom: 0; left: 0; right: 0;
     padding: 10px;
 }
-
+@media screen and (max-height: 620px) {
+    footer {
+        display: none;
+    }
+}
 div.has-button-bar {
     padding-bottom: 54px;
 }
@@ -127,4 +146,18 @@ div.has-button-bar {
 .filtertable th .glyphicon.glyphicon-triangle-bottom {
     top: 3px;
     left: 2px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #272727;
+    color: #8e8e8e;
+    text-align: right;
+}
+footer p {
+    margin: 0;
+    margin-right: 14px;
+    font-size: 10px;
 }

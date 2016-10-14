@@ -57,11 +57,18 @@ module.exports = function(app, express) {
                         expiresIn: 60*60*24
                     });
 
-                    res.json({
-                        success: true,
-                        message: 'Enjoy!',
-                        token: token
+
+                    user.lastLoggedIn = Date.now();
+                    user.save(function(err) {
+                        if(err) res.send(err);
+
+                        res.json({
+                            success: true,
+                            message: 'Enjoy!',
+                            token: token
+                        });
                     });
+
                 }
             }
         });

@@ -8,7 +8,9 @@ var UserSchema = new Schema({
     username: { type: String, required: true, index: { unique: true}},
     password: { type: String, required: true, select: false},
     events: [ { type: Schema.Types.ObjectId, ref: 'Events'}],
-    admin: { type: Boolean, default: false }
+    admin: { type: Boolean, default: false },
+    dateCreated: { type: Date, default: new Date() },
+    lastLoggedIn: { type: Date, default: new Date() }
 });
 
 UserSchema.pre('save', function(next) {
